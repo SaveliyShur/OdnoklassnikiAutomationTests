@@ -20,8 +20,6 @@ public class FriendsIconWrapper {
         this.driver = driver;
     }
 
-    public FriendsIconWrapper() {}
-
     public MoveToAvatarLayer moveToAvatar(){
 
         WebElement avatar = icon.findElement(avatarIcon);
