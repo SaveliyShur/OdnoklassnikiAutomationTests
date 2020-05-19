@@ -3,7 +3,7 @@ package pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import pages.wrappers.IconSearchInToolbarTransformer;
+import pages.wrappers.Transformer;
 import pages.wrappers.IconSearhInToolbarWrapper;
 
 import java.util.List;
@@ -38,8 +38,7 @@ public  class ToolBar extends BasePage {
         toolbar.findElement(searchLocator).sendKeys(name);
         isElementPresent(searchPanel, driver);
         List<WebElement> iconSearch = driver.findElement(searchPanel).findElements(searchIcon);
-        List<IconSearhInToolbarWrapper> iconSearchWrap =IconSearchInToolbarTransformer.wrap(iconSearch, driver);
-
+        List<IconSearhInToolbarWrapper> iconSearchWrap = Transformer.wrap(iconSearch, driver, IconSearhInToolbarWrapper.class);
     }
 
     class ArrowToDownLayers{

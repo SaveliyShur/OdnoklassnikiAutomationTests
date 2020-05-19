@@ -2,12 +2,10 @@ package pages;
 
 import org.junit.Assert;
 import org.openqa.selenium.*;
-import pages.wrappers.FriendsIconTransformer;
 import pages.wrappers.FriendsIconWrapper;
-
+import pages.wrappers.Transformer;
 import java.util.List;
 
-import static java.lang.Thread.sleep;
 
 public class Friends extends BasePage {
 
@@ -37,14 +35,14 @@ public class Friends extends BasePage {
             }
         }
         Assert.assertEquals(false, true);
-        return new FriendsIconWrapper();
+        return new FriendsIconWrapper(null, driver);
     }
 
     private List<FriendsIconWrapper> getFriendsIconOnBaseFriendsPageList(){
 
         isElementPresent(frameWishFriends,driver);
         List<WebElement> elements = driver.findElement(frameWishFriends).findElements(iconFriend);
-        List<FriendsIconWrapper> icons  = FriendsIconTransformer.wrap(elements, driver);
+        List<FriendsIconWrapper> icons  = Transformer.wrap(elements,driver,FriendsIconWrapper.class);
         return icons;
     }
 

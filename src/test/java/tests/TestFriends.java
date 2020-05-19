@@ -4,8 +4,8 @@ import bot.Bot;
 import bot.SaveliyBot;
 import bot.TechoBot5;
 import org.junit.*;
-import org.junit.Test;
 import org.junit.jupiter.api.*;
+import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -24,7 +24,7 @@ public class TestFriends {
     public static WebDriver driver ;
 
 
-    @BeforeClass
+    @BeforeAll
     public static void setup() {
         System.setProperty("webdriver.chrome.driver", "C:\\configs\\cromedriver\\chromedriver.exe");
         driver = new ChromeDriver();
@@ -43,7 +43,8 @@ public class TestFriends {
 
     @Test
     public void test2() throws InterruptedException {
-        HomePage startHomePage = new HomePage(driver);
+        Bot saveliy = new SaveliyBot(driver);
+        HomePage startHomePage = saveliy.doLogin();
         Friends friends = startHomePage.getFriendsFromToolBar();
         friends.getFriendsIcon("Олег Грабарь");
     }
@@ -60,14 +61,14 @@ public class TestFriends {
 
     }
 
-    @After
+    @AfterEach
     public void afterEveryTest()  {
         driver.get("https://ok.ru/");
         HomePage startHomePage = new HomePage(driver);
         startHomePage.getToolbar().exit();
     }
 
-    @AfterClass
+    @AfterAll
     public static void tearDown(){
         driver.quit();
     }
