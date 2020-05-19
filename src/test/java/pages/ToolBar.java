@@ -3,11 +3,17 @@ package pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import pages.wrappers.IconSearchInToolbarTransformer;
+import pages.wrappers.IconSearhInToolbarWrapper;
+
+import java.util.List;
 
 public  class ToolBar extends BasePage {
     private final By arrowToDown = By.xpath(".//*[@class='svg-ic svg-ico_mini_down_16']");
     private final By clickToFriends = By.xpath(".//*[@id='hook_Block_HeaderTopFriendsInToolbar']");
     private final By searchLocator = By.xpath(".//input[@placeholder = 'Поиск']");
+    private final By searchPanel = By.xpath("//*[@class = 'suggest-ul__a0i64']");
+    private final By searchIcon = By.xpath(".//*[@class = 'user-card-wrapper__mpodh']");
 
     private WebElement toolbar;
     private WebDriver driver;
@@ -23,13 +29,17 @@ public  class ToolBar extends BasePage {
         arrowToDownLayers.exit();
     }
 
-    public Friends clickToFriends() throws InterruptedException {
+    public Friends clickToFriends() {
         toolbar.findElement(clickToFriends).click();
         return new Friends(driver);
     }
 
     public void search(String name){
         toolbar.findElement(searchLocator).sendKeys(name);
+        isElementPresent(searchPanel, driver);
+        List<WebElement> iconSearch = driver.findElement(searchPanel).findElements(searchIcon);
+        List<IconSearhInToolbarWrapper> iconSearchWrap =IconSearchInToolbarTransformer.wrap(iconSearch, driver);
+
     }
 
     class ArrowToDownLayers{

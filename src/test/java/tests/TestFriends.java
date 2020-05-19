@@ -2,6 +2,7 @@ package tests;
 
 import bot.Bot;
 import bot.SaveliyBot;
+import bot.TechoBot5;
 import org.junit.*;
 import org.junit.Test;
 import org.junit.jupiter.api.*;
@@ -31,17 +32,10 @@ public class TestFriends {
         driver.manage().timeouts().implicitlyWait(150, TimeUnit.SECONDS);
     }
 
-    @Before
-    public void afterAllTests(){
-        Bot saveliy = new SaveliyBot(driver);
-        saveliy.doLogin();
-    }
-
-
     @Test
-    @DisplayName("Тест поиска одного друга")
      public void test() throws InterruptedException {
-        HomePage startHomePage = new HomePage(driver);
+        Bot saveliy = new SaveliyBot(driver);
+        HomePage startHomePage = saveliy.doLogin();
         Friends friends = startHomePage.getFriendsFromToolBar();
         friends.findFriend("Олег");
         Assert.assertEquals("Найден 1 друг", friends.checkFindFriend());
@@ -54,8 +48,20 @@ public class TestFriends {
         friends.getFriendsIcon("Олег Грабарь");
     }
 
+    @Test
+    public void testAddFriend(){
+        Bot bot1 = new SaveliyBot(driver);
+        HomePage startHomePage = bot1.doLogin();
+        String newFriendName = startHomePage.getNamePage();
+        bot1.doExit();
+        //todo
+        Bot bot2 = new TechoBot5(driver);
+        HomePage startHomePage2 = bot2.doLogin();
+
+    }
+
     @After
-    public void afterEveryTest() throws InterruptedException {
+    public void afterEveryTest()  {
         driver.get("https://ok.ru/");
         HomePage startHomePage = new HomePage(driver);
         startHomePage.getToolbar().exit();
