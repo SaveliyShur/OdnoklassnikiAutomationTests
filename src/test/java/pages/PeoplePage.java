@@ -13,10 +13,8 @@ public class PeoplePage extends BasePage {
     private static By ALLREADY_FRIENDS = By.xpath("//input[@name='st.email']");
 
 
-    //// TODO: 20.05.2020  А нужно ли в каждом конструкторе this.driver = driver? Ведь это есть в конструкторе BasePage
     public PeoplePage(WebDriver driver, Bot bot) {
         super(driver);
-        driver.get(bot.getProfileUrl());
     }
 
     public boolean isFriend() {
@@ -36,7 +34,6 @@ public class PeoplePage extends BasePage {
 
     @Override
     void check(WebDriver driver) {
-        // Получается, что чек не нужен, потому что он вызывается в конструкторе при вызове super(driver). Соответсвенно
-        // нефига не получится тут что-то проверить. Либо менять конструкторы (я бы так и сделал).
+
     }
 }

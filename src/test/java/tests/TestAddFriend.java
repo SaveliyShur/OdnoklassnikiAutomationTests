@@ -35,6 +35,7 @@ public class TestAddFriend {
 
         FriendsPage savaFriendsPage = new FriendsPage(driver);
 
+        driver.get(oleg.getProfileUrl());
         PeoplePage olegHomePage = new PeoplePage(driver, oleg);
         if (!olegHomePage.isFriend()) {
             olegHomePage.addFriend(sava);

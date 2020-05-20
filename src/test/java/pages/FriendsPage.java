@@ -24,7 +24,7 @@ public class FriendsPage extends BasePage {
         // TODO: 20.05.2020
     }
 
-    ////todo разве тут не нужно возвращать друга?
+
     public void findFriend(String name) throws InterruptedException {
         driver.findElement(searchInFriends).sendKeys(name);
     }
