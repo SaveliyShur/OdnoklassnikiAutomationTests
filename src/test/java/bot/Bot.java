@@ -1,6 +1,5 @@
 package bot;
 
-import org.apache.xpath.operations.String;
 import org.openqa.selenium.WebDriver;
 
 abstract public class Bot {
