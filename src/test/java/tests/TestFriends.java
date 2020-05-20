@@ -1,3 +1,4 @@
+/*
 package tests;
 
 import bot.Bot;
@@ -73,3 +74,4 @@ public class TestFriends {
 
 
 }
+*/

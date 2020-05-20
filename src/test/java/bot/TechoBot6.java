@@ -1,3 +1,4 @@
+/*
 package bot;
 
 import org.openqa.selenium.WebDriver;
@@ -7,3 +8,4 @@ public class TechoBot6 extends Bot {
         super("TechoBot6", "TechnoPolis19", driver);
     }
 }
+*/

@@ -30,9 +30,9 @@ public  class ToolBar extends BasePage {
         arrowToDownLayers.exit();
     }
 
-    public Friends clickToFriends() {
+    public FriendsPage clickToFriends() {
         toolbar.findElement(clickToFriends).click();
-        return new Friends(driver);
+        return new FriendsPage(driver);
     }
 
     public void search(String name){

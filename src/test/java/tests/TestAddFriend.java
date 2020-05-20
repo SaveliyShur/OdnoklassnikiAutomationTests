@@ -1,8 +1,15 @@
 package tests;
 
+import bot.Bot;
+import bot.OlegBot;
+import bot.SaveliyBot;
+import org.junit.Assert;
 import org.junit.jupiter.api.BeforeAll;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import pages.FriendsPage;
+import pages.LoginPage;
+import pages.PeoplePage;
 
 import java.util.concurrent.TimeUnit;
 
@@ -20,6 +27,19 @@ public class TestAddFriend {
 
     // TODO: 20.05.2020 comment test case 
     public void testAddFriend(){
+        Bot oleg = new OlegBot(driver);
+        Bot sava = new SaveliyBot(driver);
 
+        LoginPage loginPage = new LoginPage(driver);
+        loginPage.doLogin(sava);
+
+        FriendsPage savaFriendsPage = new FriendsPage(driver);
+
+        PeoplePage olegHomePage = new PeoplePage(driver, oleg);
+        if (!olegHomePage.isFriend()) {
+            olegHomePage.addFriend(sava);
+        }
+
+        Assert.assertTrue(olegHomePage.isFriendRequestSended());
     }
 }

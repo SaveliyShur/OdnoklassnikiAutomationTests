@@ -7,14 +7,14 @@ import pages.wrappers.Transformer;
 import java.util.List;
 
 
-public class Friends extends BasePage {
+public class FriendsPage extends BasePage {
 
     private final By searchInFriends = By.xpath("//*[@placeholder='Поиск среди друзей']");
     private final By frameWishFriends = By.xpath("//*[@id='hook_Block_MyFriendsSquareCardsPagingB']");
     private final By iconFriend = By.xpath(".//*[@class = 'ugrid_i']");
 
 
-    public Friends(WebDriver driver) {
+    public FriendsPage(WebDriver driver) {
         super(driver);
         this.driver = driver;
     }
@@ -24,6 +24,7 @@ public class Friends extends BasePage {
         // TODO: 20.05.2020
     }
 
+    ////todo разве тут не нужно возвращать друга?
     public void findFriend(String name) throws InterruptedException {
         driver.findElement(searchInFriends).sendKeys(name);
     }
