@@ -25,15 +25,13 @@ public class PeoplePage extends BasePage {
         return isElementPresent(REQUEST_IS_SENDED);
     }
 
-    public FriendsPage addFriend(Bot bot) {
-        assertLocator(driver, 10, ADD_TO_FRIENDS);
+    public PeoplePage addFriend(Bot bot) {
         driver.findElement(ADD_TO_FRIENDS).click();
-        assertLocator(driver, 10, REQUEST_IS_SENDED);
-        return new FriendsPage(driver);
+        return new PeoplePage(driver, bot);
     }
 
     @Override
     void check(WebDriver driver) {
-
+        //todo
     }
 }
