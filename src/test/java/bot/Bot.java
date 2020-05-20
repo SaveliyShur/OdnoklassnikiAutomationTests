@@ -11,12 +11,6 @@ abstract public class Bot {
     private final String password;
 
     private WebDriver driver;
-    private boolean entry = false;
-
-    private final By toolbarLocator = By.xpath("//*[@class = 'toolbar']");
-    private static final By loginField = By.xpath("//input[@name='st.email']");
-    private static final By passwordField = By.xpath("//input[@type='password']");
-    private static final By clickComeIn = By.xpath("//input[@value = 'Войти в Одноклассники']");
 
     Bot(String login, String password, WebDriver driver) {
         this.login = login;
@@ -24,23 +18,16 @@ abstract public class Bot {
         this.driver = driver;
     }
 
-    public HomePage doLogin(){
-        driver.get("https://ok.ru/");
-        driver.findElement(loginField).clear();
-        driver.findElement(passwordField).clear();
-        driver.findElement(loginField).sendKeys(login);
-        driver.findElement(passwordField).sendKeys(password);
-        driver.findElement(clickComeIn).click();
-        entry = true;
-        return new HomePage(driver);
+    public String getLogin() {
+        return login;
     }
 
-    public void doExit(){
-        if (entry == true) {
-            driver.get("https://ok.ru/");
-            ToolBar toolBar = new ToolBar(driver.findElement(toolbarLocator),driver);
-            toolBar.exit();
-            entry = false;
-        }
+    public String getPassword() {
+        return password;
     }
+
+    public WebDriver getDriver() {
+        return driver;
+    }
+
 }

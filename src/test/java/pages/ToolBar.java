@@ -1,5 +1,6 @@
 package pages;
 
+import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -9,6 +10,7 @@ import pages.wrappers.IconSearhInToolbarWrapper;
 import java.util.List;
 
 public  class ToolBar extends BasePage {
+
     private final By arrowToDown = By.xpath(".//*[@class='svg-ic svg-ico_mini_down_16']");
     private final By clickToFriends = By.xpath(".//*[@id='hook_Block_HeaderTopFriendsInToolbar']");
     private final By searchLocator = By.xpath(".//input[@placeholder = 'Поиск']");
@@ -16,11 +18,10 @@ public  class ToolBar extends BasePage {
     private final By searchIcon = By.xpath(".//*[@class = 'user-card-wrapper__mpodh']");
 
     private WebElement toolbar;
-    private WebDriver driver;
 
     public ToolBar(WebElement toolbar, WebDriver driver){
+        super(driver);
         this.toolbar = toolbar;
-        this.driver = driver;
     }
 
     public void exit(){
@@ -36,9 +37,15 @@ public  class ToolBar extends BasePage {
 
     public void search(String name){
         toolbar.findElement(searchLocator).sendKeys(name);
-        isElementPresent(searchPanel, driver);
+        Assert.assertTrue("Список друзей не выпал", isElementPresent(searchPanel));
         List<WebElement> iconSearch = driver.findElement(searchPanel).findElements(searchIcon);
         List<IconSearhInToolbarWrapper> iconSearchWrap = Transformer.wrap(iconSearch, driver, IconSearhInToolbarWrapper.class);
+        // TODO: 20.05.2020 return
+    }
+
+    @Override
+    void check(WebDriver driver) {
+        // TODO: 20.05.2020
     }
 
     class ArrowToDownLayers{

@@ -13,10 +13,15 @@ public class Friends extends BasePage {
     private final By frameWishFriends = By.xpath("//*[@id='hook_Block_MyFriendsSquareCardsPagingB']");
     private final By iconFriend = By.xpath(".//*[@class = 'ugrid_i']");
 
-    private WebDriver driver;
 
     public Friends(WebDriver driver) {
+        super(driver);
         this.driver = driver;
+    }
+
+    @Override
+    void check(WebDriver driver) {
+        // TODO: 20.05.2020
     }
 
     public void findFriend(String name) throws InterruptedException {
@@ -34,13 +39,12 @@ public class Friends extends BasePage {
                 return friend;
             }
         }
-        Assert.assertEquals(false, true);
+        Assert.assertEquals("Отсутствует друг по имени " + name, false, true);
         return new FriendsIconWrapper(null, driver);
     }
 
     private List<FriendsIconWrapper> getFriendsIconOnBaseFriendsPageList(){
-
-        isElementPresent(frameWishFriends,driver);
+        Assert.assertTrue("Друзья не появились", isElementPresent(frameWishFriends));
         List<WebElement> elements = driver.findElement(frameWishFriends).findElements(iconFriend);
         List<FriendsIconWrapper> icons  = Transformer.wrap(elements,driver,FriendsIconWrapper.class);
         return icons;

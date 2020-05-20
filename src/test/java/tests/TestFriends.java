@@ -14,9 +14,6 @@ import pages.Friends;
 
 import java.util.concurrent.TimeUnit;
 
-import static java.lang.Thread.sleep;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.fail;
 
 public class TestFriends {
 
@@ -54,10 +51,9 @@ public class TestFriends {
         Bot bot1 = new SaveliyBot(driver);
         HomePage startHomePage = bot1.doLogin();
         String newFriendName = startHomePage.getNamePage();
-        bot1.doExit();
         //todo
         Bot bot2 = new TechoBot5(driver);
-        HomePage startHomePage2 = bot2.doLogin();
+
 
     }
 
