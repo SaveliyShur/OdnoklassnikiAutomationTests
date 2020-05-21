@@ -7,10 +7,8 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import pages.FriendsPage;
-import pages.HomePage;
-import pages.LoginPage;
-import pages.PeoplePage;
+import pages.*;
+import pages.factory.PeoplePageFactory;
 
 import java.util.concurrent.TimeUnit;
 
@@ -19,6 +17,7 @@ import static java.lang.Thread.sleep;
 public class TestAddFriend extends BaseTests {
     public static WebDriver driver ;
 
+    // TODO: 22.05.2020 Проверку видимости заявки в отдельных тестах
     @BeforeAll
     public static void before(){
         System.setProperty("webdriver.chrome.driver", "C:\\configs\\cromedriver\\chromedriver.exe");
@@ -37,16 +36,15 @@ public class TestAddFriend extends BaseTests {
         loginPage.doLogin(bot1);
 
         driver.get(bot2.getProfileUrl());
-        PeoplePage peoplePage = new PeoplePage(driver);
+        PeoplePageInterface peoplePage = PeoplePageFactory.getPeoplePage(driver);
         Assert.assertTrue("Отправление запроса в друзья",peoplePage.addFriend().isFriendRequestSended());
-        sleep(2000);
     }
 
     @AfterAll
     public static void tearDown() throws InterruptedException {
         Bot bot2 = new TechoBot6();
         driver.get(bot2.getProfileUrl());
-        PeoplePage peoplePage = new PeoplePage(driver);
+        PeoplePageInterface peoplePage = PeoplePageFactory.getPeoplePage(driver);
         peoplePage.removingFriendRequests();
         driver.quit();
     }
