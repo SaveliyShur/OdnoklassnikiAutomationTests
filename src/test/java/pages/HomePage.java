@@ -16,7 +16,7 @@ public class HomePage extends BasePage {
 
     @Override
     void check(WebDriver driver) {
-        // TODO: 20.05.2020
+        //assertLocator(driver,100, hookBlockNavigation);
     }
 
 

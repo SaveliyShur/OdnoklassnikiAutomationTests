@@ -7,14 +7,12 @@ abstract public class Bot {
     private final String login;
     private final String password;
     private final String id;
-    private WebDriver driver;
 
 
-    Bot(String login, String password, String id, WebDriver driver) {
+    Bot(String login, String password, String id) {
         this.login = login;
         this.password = password;
         this.id = id;
-        this.driver = driver;
     }
 
     public String getLogin() {
@@ -25,9 +23,6 @@ abstract public class Bot {
         return password;
     }
 
-    public WebDriver getDriver() {
-        return driver;
-    }
 
     public String getId() {
         return id;

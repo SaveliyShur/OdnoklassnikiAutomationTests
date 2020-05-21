@@ -1,46 +1,53 @@
 package tests;
 
-import bot.Bot;
-import bot.OlegBot;
-import bot.SaveliyBot;
+import bot.*;
 import org.junit.Assert;
+import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import pages.FriendsPage;
+import pages.HomePage;
 import pages.LoginPage;
 import pages.PeoplePage;
 
 import java.util.concurrent.TimeUnit;
 
-public class TestAddFriend {
+import static java.lang.Thread.sleep;
 
+public class TestAddFriend extends BaseTests {
     public static WebDriver driver ;
 
     @BeforeAll
-    public void before(){
+    public static void before(){
         System.setProperty("webdriver.chrome.driver", "C:\\configs\\cromedriver\\chromedriver.exe");
         driver = new ChromeDriver();
         driver.manage().window().maximize();
-        driver.manage().timeouts().implicitlyWait(150, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(TIME_WAIT, TimeUnit.SECONDS);
     }
 
-    // TODO: 20.05.2020 comment test case 
-    public void testAddFriend(){
-        Bot oleg = new OlegBot(driver);
-        Bot sava = new SaveliyBot(driver);
+    @Test
+    public void testAddFriend() throws InterruptedException {
+        Bot bot1 = new TechoBot5();
+        Bot bot2 = new TechoBot6();
 
+        driver.get("https://ok.ru/");
         LoginPage loginPage = new LoginPage(driver);
-        loginPage.doLogin(sava);
+        loginPage.doLogin(bot1);
 
-        FriendsPage savaFriendsPage = new FriendsPage(driver);
+        driver.get(bot2.getProfileUrl());
+        PeoplePage peoplePage = new PeoplePage(driver);
+        Assert.assertTrue("Отправление запроса в друзья",peoplePage.addFriend().isFriendRequestSended());
+        sleep(2000);
+    }
 
-        driver.get(oleg.getProfileUrl());
-        PeoplePage olegHomePage = new PeoplePage(driver, oleg);
-        if (!olegHomePage.isFriend()) {
-            olegHomePage.addFriend(sava);
-        }
-
-        Assert.assertTrue(olegHomePage.isFriendRequestSended());
+    @AfterAll
+    public static void tearDown() throws InterruptedException {
+        Bot bot2 = new TechoBot6();
+        driver.get(bot2.getProfileUrl());
+        PeoplePage peoplePage = new PeoplePage(driver);
+        peoplePage.removingFriendRequests();
+        driver.quit();
     }
 }

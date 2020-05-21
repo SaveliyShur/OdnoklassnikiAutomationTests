@@ -17,9 +17,9 @@ public class LoginPage extends BasePage {
 
     @Override
     void check(WebDriver driver) {
-        assertLocator(driver, 10, loginField);
-        assertLocator(driver, 10, passwordField);
-        assertLocator(driver, 10, clickComeIn);
+        assertLocator(driver,  loginField);
+        assertLocator(driver,  passwordField);
+        assertLocator(driver,  clickComeIn);
     }
 
     public HomePage doLogin(Bot bot){
