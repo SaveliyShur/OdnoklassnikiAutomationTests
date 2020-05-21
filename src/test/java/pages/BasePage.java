@@ -4,6 +4,7 @@ import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -29,12 +30,30 @@ abstract public class BasePage {
         }
     }
 
+    public boolean isElementPresent(WebElement element, By xpath) {
+        try {
+            element.findElement(xpath).isDisplayed();
+            return true;
+        } catch (NoSuchElementException e) {
+            return false;
+        }
+    }
+
     public boolean isElementMiss(By element) {
         driver.manage().timeouts().implicitlyWait(0, TimeUnit.SECONDS);
-        try {
-            driver.findElement(element).isDisplayed();
+        if (driver.findElements(element).size() != 0){
+            driver.manage().timeouts().implicitlyWait(TIME_WAIT, TimeUnit.SECONDS);
             return false;
-        } catch (NoSuchElementException e) {
+        }
+        driver.manage().timeouts().implicitlyWait(TIME_WAIT, TimeUnit.SECONDS);
+        return true;
+    }
+
+    public boolean isElementMiss(WebElement element, By xpath) {
+        driver.manage().timeouts().implicitlyWait(0, TimeUnit.SECONDS);
+        if (element.findElements(xpath).size() != 0){
+            driver.manage().timeouts().implicitlyWait(TIME_WAIT, TimeUnit.SECONDS);
+            return false;
         }
         driver.manage().timeouts().implicitlyWait(TIME_WAIT, TimeUnit.SECONDS);
         return true;
@@ -44,7 +63,7 @@ abstract public class BasePage {
 
 
     public void assertLocator(WebDriver driver, By xpath) {
-        Assert.assertTrue("Элемент не найдет",
+        Assert.assertTrue("Элемент не найден",
                 new WebDriverWait(driver, 10).
                         until((ExpectedCondition<Boolean>) d -> isElementPresent(xpath)));
     }
