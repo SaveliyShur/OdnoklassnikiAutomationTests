@@ -1,8 +1,8 @@
 package pages;
 
-import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.testng.Assert;
 
 public class ClosePeoplePage extends BasePage implements PeoplePageInterface {
 
@@ -30,20 +30,18 @@ public class ClosePeoplePage extends BasePage implements PeoplePageInterface {
 
     @Override
     public PeoplePage addFriend() {
-        Assert.assertTrue("Уже отправлен запрос на добавление",isElementMiss(REQUEST_IS_SENDED));
-        Assert.assertTrue("Уже есть в друзьях",isElementMiss(ALLREADY_FRIENDS));
+        Assert.assertTrue(isElementMiss(REQUEST_IS_SENDED), "Уже отправлен запрос на добавление");
+        Assert.assertTrue(isElementMiss(ALLREADY_FRIENDS), "Уже есть в друзьях");
         driver.findElement(ADD_TO_FRIENDS).click();
         return new PeoplePage(driver);
     }
-
-
 
 
     @Override
     public PeoplePage removingFriendRequests() {
         driver.findElement(REQUEST_IS_SENDED).click();
         assertLocator(driver, REMOVING_FRIEND_REQUEST);
-        Assert.assertTrue("Не видно кнопки отменить запрос", isElementPresent(REMOVING_FRIEND_REQUEST));
+        Assert.assertTrue(isElementPresent(REMOVING_FRIEND_REQUEST), "Не видно кнопки отменить запрос");
         driver.findElement(REMOVING_FRIEND_REQUEST).click();
 
         return new PeoplePage(driver);
@@ -51,6 +49,6 @@ public class ClosePeoplePage extends BasePage implements PeoplePageInterface {
 
     @Override
     void check(WebDriver driver) {
-        assertLocator(driver,  FRIENDS_MENU);
+        assertLocator(driver, FRIENDS_MENU);
     }
 }
