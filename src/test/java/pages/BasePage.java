@@ -1,12 +1,12 @@
 package pages;
 
-import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
 
 import java.util.concurrent.TimeUnit;
 
@@ -63,8 +63,8 @@ abstract public class BasePage {
 
 
     public void assertLocator(WebDriver driver, By xpath) {
-        Assert.assertTrue("Элемент не найден",
+        Assert.assertTrue(
                 new WebDriverWait(driver, 10).
-                        until((ExpectedCondition<Boolean>) d -> isElementPresent(xpath)));
+                        until((ExpectedCondition<Boolean>) d -> isElementPresent(xpath)), "Элемент не найден");
     }
 }

@@ -1,9 +1,9 @@
 package pages;
 
-import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.testng.Assert;
 import pages.wrappers.Transformer;
 import pages.wrappers.IconSearhInToolbarWrapper;
 
@@ -37,7 +37,7 @@ public  class ToolBar extends BasePage {
 
     public void search(String name){
         toolbar.findElement(searchLocator).sendKeys(name);
-        Assert.assertTrue("Список друзей не выпал", isElementPresent(searchPanel));
+        Assert.assertTrue(isElementPresent(searchPanel), "Список друзей не выпал");
         List<WebElement> iconSearch = driver.findElement(searchPanel).findElements(searchIcon);
         List<IconSearhInToolbarWrapper> iconSearchWrap = Transformer.wrap(iconSearch, driver, IconSearhInToolbarWrapper.class);
         // TODO: 20.05.2020 return
