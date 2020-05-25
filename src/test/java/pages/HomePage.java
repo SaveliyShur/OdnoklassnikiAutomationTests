@@ -1,8 +1,9 @@
 package pages;
 
-import org.junit.Assert;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.testng.Assert;
 
 public class HomePage extends BasePage {
 
@@ -21,7 +22,7 @@ public class HomePage extends BasePage {
 
 
     public ToolBar getToolbar(){
-        Assert.assertTrue("Toolbar не виден", isElementPresent(toolbarLocator));
+        Assert.assertTrue(isElementPresent(toolbarLocator), "Toolbar не виден");
         ToolBar toolBar = new ToolBar(driver.findElement(toolbarLocator), driver);
         return toolBar;
     }

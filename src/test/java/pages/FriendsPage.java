@@ -1,7 +1,8 @@
 package pages;
 
-import org.junit.Assert;
+
 import org.openqa.selenium.*;
+import org.testng.Assert;
 import pages.wrappers.FriendsIconWrapper;
 import pages.wrappers.Transformer;
 import java.util.List;
@@ -66,7 +67,7 @@ public class FriendsPage extends BasePage  {
     }
 
     private List<FriendsIconWrapper> getFriendsIconOnBaseFriendsPageList(){
-        Assert.assertTrue("Друзья не появились", isElementPresent(frameWishFriends));
+        Assert.assertTrue(isElementPresent(frameWishFriends), "Друзья не появились");
         List<WebElement> elements = driver.findElement(frameWishFriends).findElements(iconFriend);
         List<FriendsIconWrapper> icons  = Transformer.wrap(elements,driver,FriendsIconWrapper.class);
         return icons;

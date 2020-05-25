@@ -35,14 +35,18 @@ public class TestAddFriend extends BaseTests {
         Bot bot2 = new TechoBot6();
 
         driver.get("https://ok.ru/");
+        test.log(Status.DEBUG, "Переход на ok.ru");
+
 
         LoginPage loginPage = new LoginPage(driver);
         loginPage.doLogin(bot1);
+        test.log(Status.DEBUG, "login bot1");
 
         driver.get(bot2.getProfileUrl());
-        test.log(Status.INFO, "И это работает"); // вот так это делается. Есть еще дебаг и еррор информация
+        test.log(Status.DEBUG, "Переход на " + bot2.getProfileUrl());
         PeoplePage peoplePage = new PeoplePage(driver);
         Assert.assertTrue(peoplePage.addFriend().isFriendRequestSended(), "Отправление запроса в друзья");
+        test.log(Status.DEBUG, "Запрос в друзья отправлен");
         sleep(2000);
     }
 
@@ -50,8 +54,10 @@ public class TestAddFriend extends BaseTests {
     public void after() throws InterruptedException {
         Bot bot2 = new TechoBot6();
         driver.get(bot2.getProfileUrl());
+        test.log(Status.DEBUG, "Переход на " + bot2.getProfileUrl());
         PeoplePage peoplePage = new PeoplePage(driver);
         peoplePage.removingFriendRequests();
+        test.log(Status.DEBUG, "Удаление запроса в друзья");
         driver.quit();
     }
 }
