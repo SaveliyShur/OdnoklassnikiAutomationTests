@@ -7,9 +7,9 @@ import org.testng.Assert;
 
 public class HomePage extends BasePage {
 
-    private final By toolbarLocator = By.xpath("//*[@class = 'toolbar']");
-    private final By nameLocator = By.xpath(".//*[@data-l='t,userPage']");
-    private final By hookBlockNavigation = By.xpath("//*[@id = 'hook_Block_Navigation']");
+    private static final By toolbarLocator = By.xpath("//*[@class = 'toolbar']");
+    private static final By nameLocator = By.xpath(".//*[@data-l='t,userPage']");
+    private static final By hookBlockNavigation = By.xpath("//*[@id = 'hook_Block_Navigation']");
 
     public HomePage(WebDriver driver) {
         super(driver);
@@ -17,7 +17,7 @@ public class HomePage extends BasePage {
 
     @Override
     void check(WebDriver driver) {
-        //assertLocator(driver,100, hookBlockNavigation);
+        assertLocator(driver, hookBlockNavigation);
     }
 
 

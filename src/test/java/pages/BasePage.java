@@ -13,13 +13,13 @@ import java.util.concurrent.TimeUnit;
 import static tests.BaseTests.TIME_WAIT;
 
 abstract public class BasePage {
-
     WebDriver driver;
 
     public BasePage(WebDriver driver) {
         this.driver = driver;
         check(driver);
     }
+
 
     public boolean isElementPresent(By element) {
         try {
@@ -39,7 +39,7 @@ abstract public class BasePage {
         }
     }
 
-    public boolean isElementMiss(By element) {
+    public  boolean isElementMiss(By element) {
         driver.manage().timeouts().implicitlyWait(0, TimeUnit.SECONDS);
         if (driver.findElements(element).size() != 0){
             driver.manage().timeouts().implicitlyWait(TIME_WAIT, TimeUnit.SECONDS);

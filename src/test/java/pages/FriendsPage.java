@@ -11,15 +11,15 @@ import java.util.List;
 
 public class FriendsPage extends BasePage  {
 
-    private final By searchInFriends = By.xpath("//*[@placeholder='Поиск среди друзей']");
-    private final By frameWishFriends = By.xpath("//*[@id='hook_Block_MyFriendsSquareCardsPagingB']");
-    private final By iconFriend = By.xpath(".//*[@class = 'ugrid_i']");
+    private static final By searchInFriends = By.xpath("//*[@placeholder='Поиск среди друзей']");
+    private static final By frameWishFriends = By.xpath("//*[@id='hook_Block_UserFriendsCatalogRB']");
+    private static final By iconFriend = By.xpath(".//*[@class = 'ugrid_i']");
     private static final By TOOLBAR = By.xpath("//*[@class='toolbar']");
-    private final By leftToolbarForNavigationFriends = By.xpath("//*[@id='UserFriendsCatalogRB']");
-    private final By AllFriends = By.xpath(".//*[text() = 'Все']");
-    private final By FriendRequests = By.xpath(".//*[contains(text(), 'Заявки в друзья')]");
-    private final By OutgoingFriendRequests = By.xpath(".//*[contains(text(), 'Исходящие заявки в друзья')]");
-    private final By IconFriendRequestLocator = By.xpath("//*[@class='ucard-w-list_i']");
+    private static final By leftToolbarForNavigationFriends = By.xpath("//*[@id='UserFriendsCatalogRB']");
+    private static final By AllFriends = By.xpath(".//*[contains(text(), 'Все')]");
+    private static final By FriendRequests = By.xpath(".//*[contains(text(), 'Заявки в друзья')]");
+    private static final By OutgoingFriendRequests = By.xpath(".//*[contains(text(), 'Исходящие заявки в друзья')]");
+    private static final By IconFriendRequestLocator = By.xpath("//*[@class='ucard-w-list_i']");
 
     public FriendsPage(WebDriver driver) {
         super(driver);
@@ -27,8 +27,8 @@ public class FriendsPage extends BasePage  {
 
     @Override
     void check(WebDriver driver) {
-        //assertLocator(driver, leftToolbarForNavigationFriends);
-        //assertLocator(driver, frameWishFriends);
+        assertLocator(driver, leftToolbarForNavigationFriends);
+        assertLocator(driver, frameWishFriends);
     }
 
     public ToolBar getToolbar(){
@@ -44,28 +44,29 @@ public class FriendsPage extends BasePage  {
 
 
     public FriendsPage clickToAllFriends() {
-        driver.findElement(AllFriends).click();
+        driver.findElement(frameWishFriends).findElement(AllFriends).click();
         return this;
     }
 
     public FriendsPage clickToFriendRequests() {
-        driver.findElement(FriendRequests).click();
+        driver.findElement(frameWishFriends).findElement(FriendRequests).click();
         return this;
     }
 
     public FriendsPage clickToOutGoingFriendRequests() {
-        driver.findElement(OutgoingFriendRequests).click();
+        driver.findElement(frameWishFriends).findElement(OutgoingFriendRequests).click();
         return this;
     }
 
-    public FriendsPage checkFriendByURLOnFriendRequests(String url){
+    public IconFriendRequest checkFriendByURLOnFriendRequests(String id){
         List<IconFriendRequest> elements = getIconsFriendRequestOnToOutgoingFriendRequests();
         for (IconFriendRequest element : elements){
-            element.isURL(url);
-            return this;
+            if(element.isID(id)){
+                return element;
+            }
         }
-        Assert.fail("Друг по URL не найден. Отсутсвует заявка.");
-        return this;
+        Assert.fail("Друг по ID не найден. Отсутсвует заявка.");
+        return null;
     }
 
 
@@ -73,16 +74,17 @@ public class FriendsPage extends BasePage  {
         return driver.findElement(By.xpath("//*[@id='searchResults']/div[1]/div[2]/span")).getText();
     }
 
-    public FriendsIconWrapper getFriendsIcon(String name){
+    public FriendsIconWrapper getFriendsIcon(String id){
         List<FriendsIconWrapper> friends = getFriendsIconOnBaseFriendsPageList();
         for (FriendsIconWrapper friend : friends){
-            if (friend.getName().equals(name)){
+            if (friend.isID(id)){
                 return friend;
             }
         }
-        Assert.fail("Отсутствует друг по имени " + name);
-        return new FriendsIconWrapper(null, driver);
+        Assert.fail("Отсутствует друг с ID  " + id);
+        return null;
     }
+
 
     private List<IconFriendRequest> getIconsFriendRequestOnToOutgoingFriendRequests(){
         Assert.assertTrue(isElementPresent(IconFriendRequestLocator), "Отсутсвуют заявки");

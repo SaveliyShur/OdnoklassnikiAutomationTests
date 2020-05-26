@@ -40,10 +40,10 @@ public class TestAddFriendRequest extends BaseTests {
     public void before(){
         setDriver();
     }
+
     @Test
     public void testAddFriend() throws InterruptedException {
         test = extent.createTest(this.getClass().getSimpleName());
-
 
         driver.get("https://ok.ru/");
 
@@ -70,9 +70,7 @@ public class TestAddFriendRequest extends BaseTests {
 
     @AfterTest
     public void after() throws InterruptedException {
-        driver.get("https://ok.ru/");
-        LoginPage loginPage = new LoginPage(driver);
-        loginPage.doLogin(bot1);
+        getLoginPage().doLogin(bot1);
         driver.get(bot2.getProfileUrl());
         PeoplePage peoplePage = new PeoplePage(driver);
         peoplePage.removingFriendRequests();

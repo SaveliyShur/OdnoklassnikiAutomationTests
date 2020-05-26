@@ -13,11 +13,11 @@ import static java.lang.Thread.sleep;
 
 public  class ToolBar extends BasePage {
 
-    private final By arrowToDown = By.xpath(".//*[@class='svg-ic svg-ico_mini_down_16']");
-    private final By clickToFriends = By.xpath(".//*[@id='hook_Block_HeaderTopFriendsInToolbar']");
-    private final By searchLocator = By.xpath(".//input[@placeholder = 'Поиск']");
-    private final By searchPanel = By.xpath("//*[@class = 'suggest-ul__a0i64']");
-    private final By searchIcon = By.xpath(".//*[@class = 'user-card-wrapper__mpodh']");
+    private static final By arrowToDown = By.xpath(".//*[@class='svg-ic svg-ico_mini_down_16']");
+    private static final By clickToFriends = By.xpath(".//*[@id='hook_Block_HeaderTopFriendsInToolbar']");
+    private static final By searchLocator = By.xpath(".//input[@placeholder = 'Поиск']");
+    private static final By searchPanel = By.xpath("//*[@class = 'suggest-ul__a0i64']");
+    private static final By searchIcon = By.xpath(".//*[@class = 'user-card-wrapper__mpodh']");
 
     private WebElement toolbar;
 
@@ -33,7 +33,7 @@ public  class ToolBar extends BasePage {
         return new LoginPage(driver);
     }
 
-    public FriendsPage clickToFriends() throws InterruptedException {
+    public FriendsPage clickToFriends()  {
         toolbar.findElement(clickToFriends).click();
         return new FriendsPage(driver);
     }
@@ -47,9 +47,7 @@ public  class ToolBar extends BasePage {
     }
 
     @Override
-    void check(WebDriver driver) {
-        // TODO: 20.05.2020
-    }
+    void check(WebDriver driver) { }
 
     class ArrowToDownLayers{
         private final By exitButton1 = By.xpath(".//*[text()='Выйти']");

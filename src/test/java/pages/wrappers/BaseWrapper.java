@@ -1,6 +1,7 @@
 package pages.wrappers;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
@@ -35,6 +36,24 @@ abstract public class BaseWrapper {
         }
         driver.manage().timeouts().implicitlyWait(TIME_WAIT, TimeUnit.SECONDS);
         return true;
+    }
+
+    public boolean isElementPresent(By element) {
+        try {
+            driver.findElement(element).isDisplayed();
+            return true;
+        } catch (NoSuchElementException e) {
+            return false;
+        }
+    }
+
+    public boolean isElementPresent(WebElement element, By xpath) {
+        try {
+            element.findElement(xpath).isDisplayed();
+            return true;
+        } catch (NoSuchElementException e) {
+            return false;
+        }
     }
 
 }
