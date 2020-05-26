@@ -2,13 +2,14 @@ package pages;
 
 public interface PeoplePageInterface {
 
-    public boolean isFriend();
+    boolean isFriend();
 
-    public PeoplePage addFriend();
+    PeoplePage addFriend();
 
-    public boolean isFriendRequestSended();
+    boolean isFriendRequestSended();
 
-    public PeoplePage removingFriendRequests();
+    PeoplePage removingFriendRequests();
 
+    ToolBar getToolbar();
 
 }

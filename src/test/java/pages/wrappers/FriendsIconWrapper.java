@@ -7,17 +7,13 @@ import org.openqa.selenium.interactions.Actions;
 
 import static java.lang.Thread.sleep;
 
-public class FriendsIconWrapper {
-
-    private WebElement icon;
-    private WebDriver driver;
+public class FriendsIconWrapper extends BaseWrapper{
 
     private final By avatarIcon = By.xpath(".//*[@class = 'user-grid-card_img']");
     public final By name = By.xpath(".//*[@class = 'n-t bold']");
 
     public FriendsIconWrapper(WebElement icon, WebDriver driver) {
-        this.icon = icon;
-        this.driver = driver;
+        super(icon, driver);
     }
 
 

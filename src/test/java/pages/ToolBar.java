@@ -9,6 +9,8 @@ import pages.wrappers.IconSearhInToolbarWrapper;
 
 import java.util.List;
 
+import static java.lang.Thread.sleep;
+
 public  class ToolBar extends BasePage {
 
     private final By arrowToDown = By.xpath(".//*[@class='svg-ic svg-ico_mini_down_16']");
@@ -30,7 +32,7 @@ public  class ToolBar extends BasePage {
         arrowToDownLayers.exit();
     }
 
-    public FriendsPage clickToFriends() {
+    public FriendsPage clickToFriends() throws InterruptedException {
         toolbar.findElement(clickToFriends).click();
         return new FriendsPage(driver);
     }

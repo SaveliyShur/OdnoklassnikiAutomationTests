@@ -5,14 +5,19 @@ import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.markuputils.ExtentColor;
 import com.aventstack.extentreports.markuputils.MarkupHelper;
 import com.aventstack.extentreports.reporter.ExtentHtmlReporter;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeSuite;
 
+import java.util.concurrent.TimeUnit;
+
 
 abstract public class BaseTests {
-    public static long TIME_WAIT = 5;
+    public WebDriver driver ;
+    public static long TIME_WAIT = 10;
     public static ExtentHtmlReporter htmlReporter;
     public static ExtentReports extent;
     public static ExtentTest test;
@@ -39,5 +44,12 @@ abstract public class BaseTests {
     @AfterSuite
     public void tearDown() {
         extent.flush();
+    }
+
+    protected void setDriver(){
+        System.setProperty("webdriver.chrome.driver", "C:\\configs\\cromedriver\\chromedriver.exe");
+        driver = new ChromeDriver();
+        driver.manage().window().maximize();
+        driver.manage().timeouts().implicitlyWait(TIME_WAIT, TimeUnit.SECONDS);
     }
 }

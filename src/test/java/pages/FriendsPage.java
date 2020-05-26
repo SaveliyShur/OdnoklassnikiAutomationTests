@@ -4,6 +4,7 @@ package pages;
 import org.openqa.selenium.*;
 import org.testng.Assert;
 import pages.wrappers.FriendsIconWrapper;
+import pages.wrappers.IconFriendRequest;
 import pages.wrappers.Transformer;
 import java.util.List;
 
@@ -17,7 +18,8 @@ public class FriendsPage extends BasePage  {
     private final By leftToolbarForNavigationFriends = By.xpath("//*[@id='UserFriendsCatalogRB']");
     private final By AllFriends = By.xpath(".//*[text() = 'Все']");
     private final By FriendRequests = By.xpath(".//*[text() = 'Заявки в друзья']");
-    private final By OutgoingFriendRequests = By.xpath(".//*[text() = 'Исходящие заявки в друзья']");
+    private final By OutgoingFriendRequests = By.xpath(".//*[text() = 'Исходящие заявки в друзья ']");
+    private final By IconFriendRequestLocator = By.xpath("//*[@class='ucard-w-list_i']");
 
     public FriendsPage(WebDriver driver) {
         super(driver);
@@ -25,8 +27,8 @@ public class FriendsPage extends BasePage  {
 
     @Override
     void check(WebDriver driver) {
-        assertLocator(driver, leftToolbarForNavigationFriends);
-        assertLocator(driver, frameWishFriends);
+        //assertLocator(driver, leftToolbarForNavigationFriends);
+        //assertLocator(driver, frameWishFriends);
     }
 
     public FriendsPage findFriend(String name) {
@@ -45,8 +47,18 @@ public class FriendsPage extends BasePage  {
         return this;
     }
 
-    public FriendsPage clickToOutgoingFriendRequests() {
+    public FriendsPage clickToOutGoingFriendRequests() {
         driver.findElement(OutgoingFriendRequests).click();
+        return this;
+    }
+
+    public FriendsPage checkFriendByURLOnOutGoingFriendRequests(String url){
+        List<IconFriendRequest> elements = getIconsFriendRequestOnToOutgoingFriendRequests();
+        for (IconFriendRequest element : elements){
+            element.isURL(url);
+            return this;
+        }
+        Assert.fail("Друг по URL не найден. Отсутсвует исходящая заявка.");
         return this;
     }
 
@@ -64,6 +76,13 @@ public class FriendsPage extends BasePage  {
         }
         Assert.fail("Отсутствует друг по имени " + name);
         return new FriendsIconWrapper(null, driver);
+    }
+
+    private List<IconFriendRequest> getIconsFriendRequestOnToOutgoingFriendRequests(){
+        Assert.assertTrue(isElementPresent(IconFriendRequestLocator), "Отсутсвуют исходящие заявки");
+        List<WebElement> elements = driver.findElements(IconFriendRequestLocator);
+        List<IconFriendRequest> icons = Transformer.wrap(elements,driver,IconFriendRequest.class);
+        return icons;
     }
 
     private List<FriendsIconWrapper> getFriendsIconOnBaseFriendsPageList(){

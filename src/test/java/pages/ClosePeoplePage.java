@@ -48,6 +48,13 @@ public class ClosePeoplePage extends BasePage implements PeoplePageInterface {
     }
 
     @Override
+    public ToolBar getToolbar() {
+        Assert.assertTrue( isElementPresent(TOOLBAR), "Не виден тулбар");
+        ToolBar toolBar = new ToolBar(driver.findElement(TOOLBAR), driver);
+        return toolBar;
+    }
+
+    @Override
     void check(WebDriver driver) {
         assertLocator(driver, FRIENDS_MENU);
     }

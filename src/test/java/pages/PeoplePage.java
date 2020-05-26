@@ -42,12 +42,13 @@ public class PeoplePage extends BasePage  implements PeoplePageInterface{
         return new PeoplePage(driver);
     }
 
-    // TODO: 22.05.2020 Надо ли этот метод включать в интерфейс 
-    protected FriendsPage toFriendsPage(){
+    @Override
+    public ToolBar getToolbar(){
         Assert.assertTrue( isElementPresent(TOOLBAR), "Не виден тулбар");
         ToolBar toolBar = new ToolBar(driver.findElement(TOOLBAR), driver);
-        return toolBar.clickToFriends();
+        return toolBar;
     }
+
     @Override
     public PeoplePage removingFriendRequests() {
         driver.findElement(REQUEST_IS_SENDED).click();
