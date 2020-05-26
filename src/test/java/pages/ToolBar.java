@@ -26,10 +26,11 @@ public  class ToolBar extends BasePage {
         this.toolbar = toolbar;
     }
 
-    public void exit(){
+    public LoginPage exit(){
         toolbar.findElement(arrowToDown).click();
         ArrowToDownLayers arrowToDownLayers = new ArrowToDownLayers();
         arrowToDownLayers.exit();
+        return new LoginPage(driver);
     }
 
     public FriendsPage clickToFriends() throws InterruptedException {

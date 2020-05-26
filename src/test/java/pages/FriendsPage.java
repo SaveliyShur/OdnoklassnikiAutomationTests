@@ -14,11 +14,11 @@ public class FriendsPage extends BasePage  {
     private final By searchInFriends = By.xpath("//*[@placeholder='Поиск среди друзей']");
     private final By frameWishFriends = By.xpath("//*[@id='hook_Block_MyFriendsSquareCardsPagingB']");
     private final By iconFriend = By.xpath(".//*[@class = 'ugrid_i']");
-
+    private static final By TOOLBAR = By.xpath("//*[@class='toolbar']");
     private final By leftToolbarForNavigationFriends = By.xpath("//*[@id='UserFriendsCatalogRB']");
     private final By AllFriends = By.xpath(".//*[text() = 'Все']");
-    private final By FriendRequests = By.xpath(".//*[text() = 'Заявки в друзья']");
-    private final By OutgoingFriendRequests = By.xpath(".//*[text() = 'Исходящие заявки в друзья ']");
+    private final By FriendRequests = By.xpath(".//*[contains(text(), 'Заявки в друзья')]");
+    private final By OutgoingFriendRequests = By.xpath(".//*[contains(text(), 'Исходящие заявки в друзья')]");
     private final By IconFriendRequestLocator = By.xpath("//*[@class='ucard-w-list_i']");
 
     public FriendsPage(WebDriver driver) {
@@ -29,6 +29,12 @@ public class FriendsPage extends BasePage  {
     void check(WebDriver driver) {
         //assertLocator(driver, leftToolbarForNavigationFriends);
         //assertLocator(driver, frameWishFriends);
+    }
+
+    public ToolBar getToolbar(){
+        Assert.assertTrue( isElementPresent(TOOLBAR), "Не виден тулбар");
+        ToolBar toolBar = new ToolBar(driver.findElement(TOOLBAR), driver);
+        return toolBar;
     }
 
     public FriendsPage findFriend(String name) {
@@ -52,13 +58,13 @@ public class FriendsPage extends BasePage  {
         return this;
     }
 
-    public FriendsPage checkFriendByURLOnOutGoingFriendRequests(String url){
+    public FriendsPage checkFriendByURLOnFriendRequests(String url){
         List<IconFriendRequest> elements = getIconsFriendRequestOnToOutgoingFriendRequests();
         for (IconFriendRequest element : elements){
             element.isURL(url);
             return this;
         }
-        Assert.fail("Друг по URL не найден. Отсутсвует исходящая заявка.");
+        Assert.fail("Друг по URL не найден. Отсутсвует заявка.");
         return this;
     }
 
@@ -79,7 +85,7 @@ public class FriendsPage extends BasePage  {
     }
 
     private List<IconFriendRequest> getIconsFriendRequestOnToOutgoingFriendRequests(){
-        Assert.assertTrue(isElementPresent(IconFriendRequestLocator), "Отсутсвуют исходящие заявки");
+        Assert.assertTrue(isElementPresent(IconFriendRequestLocator), "Отсутсвуют заявки");
         List<WebElement> elements = driver.findElements(IconFriendRequestLocator);
         List<IconFriendRequest> icons = Transformer.wrap(elements,driver,IconFriendRequest.class);
         return icons;

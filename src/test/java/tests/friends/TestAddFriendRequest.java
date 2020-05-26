@@ -8,6 +8,7 @@ import org.testng.Assert;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
+import pages.FriendsPage;
 import pages.LoginPage;
 import pages.PeoplePage;
 import tests.BaseTests;
@@ -32,6 +33,9 @@ import static java.lang.Thread.sleep;
 
 public class TestAddFriendRequest extends BaseTests {
 
+    Bot bot1 = new TechoBot5();
+    Bot bot2 = new TechoBot6();
+
     @BeforeTest
     public void before(){
         setDriver();
@@ -40,8 +44,6 @@ public class TestAddFriendRequest extends BaseTests {
     public void testAddFriend() throws InterruptedException {
         test = extent.createTest(this.getClass().getSimpleName());
 
-        Bot bot1 = new TechoBot5();
-        Bot bot2 = new TechoBot6();
 
         driver.get("https://ok.ru/");
 
@@ -51,17 +53,26 @@ public class TestAddFriendRequest extends BaseTests {
         driver.get(bot2.getProfileUrl());
         PeoplePage peoplePage = new PeoplePage(driver);
         Assert.assertTrue(peoplePage.addFriend().isFriendRequestSended(), "Отправление запроса в друзья. Проверка на странице друга");
-        peoplePage.getToolbar()
+        FriendsPage friendsPage = peoplePage.getToolbar()
+                .clickToFriends();
+        friendsPage.clickToOutGoingFriendRequests()
+                .checkFriendByURLOnFriendRequests(bot2.getId());
+        LoginPage loginPage1 = friendsPage.getToolbar()
+                .exit();
+        FriendsPage friendsPage2 = loginPage1.doLogin(bot2)
+                .getToolbar()
                 .clickToFriends()
-                .clickToOutGoingFriendRequests()
-                .checkFriendByURLOnOutGoingFriendRequests(bot2.getId());
-        sleep(3000);
-
+                .clickToFriendRequests();
+        friendsPage2.checkFriendByURLOnFriendRequests(bot1.getId());
+        friendsPage2.getToolbar()
+                .exit();
     }
 
     @AfterTest
     public void after() throws InterruptedException {
-        Bot bot2 = new TechoBot6();
+        driver.get("https://ok.ru/");
+        LoginPage loginPage = new LoginPage(driver);
+        loginPage.doLogin(bot1);
         driver.get(bot2.getProfileUrl());
         PeoplePage peoplePage = new PeoplePage(driver);
         peoplePage.removingFriendRequests();
