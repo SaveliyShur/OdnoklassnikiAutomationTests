@@ -45,6 +45,7 @@ public class FriendsIconWrapper extends BaseWrapper{
         return new FriendsPage(driver);
     }
 
+
     class MoveToAvatarLayer{
         private final By stopFriends = By.xpath(".//*[text()='Прекратить дружбу']");
         private WebElement avatar;

@@ -5,11 +5,11 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import pages.FriendsPage;
 
-public class IconFriendRequest extends BaseWrapper {
+public class IconFriendRequestOnFriends extends BaseWrapper {
 
     private static final By ADD_FRIEND = By.xpath(".//*[text() = 'Принять']");
 
-    public IconFriendRequest(WebElement icon, WebDriver driver) {
+    public IconFriendRequestOnFriends(WebElement icon, WebDriver driver) {
         super(icon, driver);
 
     }

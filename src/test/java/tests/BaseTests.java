@@ -59,6 +59,7 @@ abstract public class BaseTests {
     }
 
     protected LoginPage getLoginPage(){
+        driver.get("https://ok.ru/");
         driver.manage().timeouts().implicitlyWait(0, TimeUnit.SECONDS);
         if(driver.findElements(TOOLBAR).size() == 0){
             return new LoginPage(driver);
