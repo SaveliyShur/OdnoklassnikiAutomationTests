@@ -3,9 +3,7 @@ package tests.friends;
 import bot.Bot;
 import bot.SaveliyBot;
 import org.testng.Assert;
-import org.testng.annotations.AfterTest;
-import org.testng.annotations.BeforeTest;
-import org.testng.annotations.Test;
+import org.testng.annotations.*;
 import pages.FriendsPage;
 import pages.PeoplePage;
 import pages.wrappers.FriendIconAfterSearchOnFriends;
@@ -26,7 +24,7 @@ public class CheckSearchFriend extends BaseTests {
 
     Bot saveliy = new SaveliyBot();
 
-    @BeforeTest
+    @BeforeClass
     public void before(){
         setDriver();
     }
@@ -50,7 +48,7 @@ public class CheckSearchFriend extends BaseTests {
         }
     }
 
-    @AfterTest
+    @AfterClass
     public void after()  {
         driver.quit();
     }

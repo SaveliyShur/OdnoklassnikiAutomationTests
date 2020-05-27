@@ -51,10 +51,11 @@ public  class ToolBar extends BasePage {
 
     class ArrowToDownLayers{
         private final By exitButton1 = By.xpath(".//*[text()='Выйти']");
-        private final By exitButton2 = By.xpath("//*[@id='hook_FormButton_logoff.confirm_not_decorate']");
+        private final By exitButton2 = By.xpath("//*[@class='button-pro form-actions_yes']");
 
         void exit(){
             toolbar.findElement(exitButton1).click();
+            assertLocator(driver,exitButton2);
             toolbar.findElement(exitButton2).click();
         }
     }

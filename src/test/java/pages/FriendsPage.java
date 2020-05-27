@@ -20,7 +20,7 @@ public class FriendsPage extends BasePage  {
     private static final By TOOLBAR = By.xpath("//*[@class='toolbar']");
     private static final By leftToolbarForNavigationFriends = By.xpath("//*[@id='UserFriendsCatalogRB']");
     private static final By AllFriends = By.xpath(".//*[contains(text(), 'Все')]");
-    private static final By FriendRequests = By.xpath(".//*[contains(text(), 'Заявки в друзья')]");
+    private static final By FriendRequests = By.xpath(".//*[contains(@href, '/friendRequests')]");
     private static final By OutgoingFriendRequests = By.xpath(".//*[contains(text(), 'Исходящие заявки в друзья')]");
     private static final By IconFriendRequestLocator = By.xpath("//*[@class='ucard-w-list_i']");
     private static final By ICON_FRIEND_AFTER_SEARCH = By.xpath("//*[@class='gs_result_list']//*[contains(@class, 'gs_result_i_w')]");
@@ -53,17 +53,17 @@ public class FriendsPage extends BasePage  {
 
 
     public FriendsPage clickToAllFriends() {
-        driver.findElement(frameWishFriends).findElement(AllFriends).click();
+        driver.findElement(leftToolbarForNavigationFriends).findElement(AllFriends).click();
         return this;
     }
 
     public FriendsPage clickToFriendRequests() {
-        driver.findElement(frameWishFriends).findElement(FriendRequests).click();
+        driver.findElement(leftToolbarForNavigationFriends).findElement(FriendRequests).click();
         return this;
     }
 
     public FriendsPage clickToOutGoingFriendRequests() {
-        driver.findElement(frameWishFriends).findElement(OutgoingFriendRequests).click();
+        driver.findElement(leftToolbarForNavigationFriends).findElement(OutgoingFriendRequests).click();
         return this;
     }
 

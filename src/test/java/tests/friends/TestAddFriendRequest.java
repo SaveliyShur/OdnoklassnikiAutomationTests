@@ -5,9 +5,7 @@ import com.aventstack.extentreports.Status;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
-import org.testng.annotations.AfterTest;
-import org.testng.annotations.BeforeTest;
-import org.testng.annotations.Test;
+import org.testng.annotations.*;
 import pages.FriendsPage;
 import pages.LoginPage;
 import pages.PeoplePage;
@@ -36,7 +34,7 @@ public class TestAddFriendRequest extends BaseTests {
     Bot bot1 = new TechoBot5();
     Bot bot2 = new TechoBot6();
 
-    @BeforeTest
+    @BeforeClass
     public void before(){
         setDriver();
     }
@@ -45,9 +43,7 @@ public class TestAddFriendRequest extends BaseTests {
     public void testAddFriend() throws InterruptedException {
         test = extent.createTest(this.getClass().getSimpleName());
 
-        driver.get("https://ok.ru/");
-
-        LoginPage loginPage = new LoginPage(driver);
+        LoginPage loginPage = getLoginPage();
         loginPage.doLogin(bot1);
 
         driver.get(bot2.getProfileUrl());
@@ -68,7 +64,7 @@ public class TestAddFriendRequest extends BaseTests {
                 .exit();
     }
 
-    @AfterTest
+    @AfterClass
     public void after() throws InterruptedException {
         getLoginPage().doLogin(bot1);
         driver.get(bot2.getProfileUrl());

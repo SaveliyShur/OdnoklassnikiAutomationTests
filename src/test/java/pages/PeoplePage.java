@@ -30,7 +30,6 @@ public class PeoplePage extends BasePage  implements PeoplePageInterface{
     
     @Override
     public boolean isFriendRequestSended() {
-        driver.findElement(REQUEST_IS_SENDED);
         return isElementPresent(REQUEST_IS_SENDED);
     }
     

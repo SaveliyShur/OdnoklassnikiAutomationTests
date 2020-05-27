@@ -4,11 +4,17 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedCondition;
+import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
 import pages.FriendsPage;
 
 import static java.lang.Thread.sleep;
 
 public class FriendsIconWrapper extends BaseWrapper{
+    private static final By stopFriends = By.xpath("//*[@id='hook_Block_MainContainer']/div[6]/table/tbody/tr/td/div/div/div[1]/div/div[7]/ul/li/a/span");
+    private static final By LAYER = By.xpath("//*[@class = 'ic_delete']");
+    private static final By YES = By.xpath("//*[@value='Прекратить']");
 
     private static final By avatarIcon = By.xpath(".//*[@class = 'user-grid-card_img']");
     private static final By name = By.xpath(".//*[@class = 'n-t bold']");
@@ -46,16 +52,27 @@ public class FriendsIconWrapper extends BaseWrapper{
     }
 
 
-    class MoveToAvatarLayer{
-        private final By stopFriends = By.xpath(".//*[text()='Прекратить дружбу']");
+     class MoveToAvatarLayer{
         private WebElement avatar;
         public MoveToAvatarLayer(WebElement avatar) {
             this.avatar = avatar;
         }
 
+        Actions act = new Actions(driver);
+
+
         public void stopFriends() {
-            avatar.findElement(stopFriends).click();
+            act.moveToElement(avatar).build().perform();
+            assertLocator(driver,LAYER);
+            driver.findElement(stopFriends).click();
+            driver.findElement(YES).click();
         }
+
+         private void assertLocator(WebDriver driver, By xpath) {
+             Assert.assertTrue(
+                     new WebDriverWait(driver, 10).
+                             until((ExpectedCondition<Boolean>) d -> isElementPresent(xpath)), "Элемент не найден");
+         }
     }
 }
 

@@ -3,6 +3,8 @@ package tests.friends;
 import bot.Bot;
 import bot.TechoBot5;
 import bot.TechoBot6;
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 import pages.FriendsPage;
@@ -25,16 +27,16 @@ public class TestAddFriends extends BaseTests {
     Bot bot1 = new TechoBot5();
     Bot bot2 = new TechoBot6();
 
-    @BeforeTest
+    @BeforeClass
     public void before(){
         setDriver();
     }
 
     @Test
     public void testAddFriend() throws InterruptedException {
-        driver.get("https://ok.ru/");
+        test = extent.createTest(this.getClass().getSimpleName());
 
-        LoginPage loginPage = new LoginPage(driver);
+        LoginPage loginPage = getLoginPage();
         loginPage.doLogin(bot1);
 
         driver.get(bot2.getProfileUrl());
@@ -58,7 +60,9 @@ public class TestAddFriends extends BaseTests {
                 .getFriendsIcon(bot2.getId());
     }
 
+    @AfterClass
     public void deleteFriend(){
+        LoginPage loginPage = getLoginPage();
         getLoginPage().doLogin(bot1);
         driver.get(bot2.getProfileUrl());
         PeoplePage bot2Page = new PeoplePage(driver);
