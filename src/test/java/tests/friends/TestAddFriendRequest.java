@@ -31,28 +31,21 @@ import static java.lang.Thread.sleep;
 
 public class TestAddFriendRequest extends BaseTests {
 
-    Bot bot1 = new TechoBot5();
-    Bot bot2 = new TechoBot6();
+    private final Bot bot1 = new TechoBot5();
+    private final Bot bot2 = new TechoBot6();
 
-    @BeforeClass
-    public void before(){
-        setDriver();
-    }
 
     @Test(priority = 1)
     public void testAddFriend() throws InterruptedException {
-        test = extent.createTest(this.getClass().getSimpleName());
-
-        test.log(Status.INFO, "Логинимся");
         LoginPage loginPage = getLoginPage();
         loginPage.doLogin(bot1);
-        test.log(Status.INFO, "Залогинились");
+        test.log(Status.DEBUG, "Логин bot1");
 
         driver.get(bot2.getProfileUrl());
-        test.log(Status.INFO, "Перешли на страницу бота2");
+        test.log(Status.DEBUG, "Переход на страницу bot2");
         PeoplePage peoplePage = new PeoplePage(driver);
         Assert.assertTrue(peoplePage.addFriend().isFriendRequestSended(), "Отправление запроса в друзья. Проверка на странице друга");
-        test.log(Status.INFO, "Отправили запрос в друзья");
+        test.log(Status.DEBUG, "Отправление запроса в друзья от bot1 к bot2");
         FriendsPage friendsPage = peoplePage.getToolbar()
                 .clickToFriends();
         friendsPage.clickToOutGoingFriendRequests()
@@ -71,9 +64,12 @@ public class TestAddFriendRequest extends BaseTests {
     @AfterClass
     public void after() throws InterruptedException {
         getLoginPage().doLogin(bot1);
+        test.log(Status.DEBUG, "Логин bot1");
         driver.get(bot2.getProfileUrl());
+        test.log(Status.DEBUG, "Переход на страницу bot2");
         PeoplePage peoplePage = new PeoplePage(driver);
         peoplePage.removingFriendRequests();
+        test.log(Status.DEBUG, "Удаление запроса на добавление в друзья");
         driver.quit();
         test.log(Status.DEBUG, "After метод успешно отработал");
     }

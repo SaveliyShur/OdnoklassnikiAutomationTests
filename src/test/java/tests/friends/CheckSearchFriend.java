@@ -23,17 +23,11 @@ import static java.lang.Thread.sleep;
  */
 public class CheckSearchFriend extends BaseTests {
 
-    Bot saveliy = new SaveliyBot();
+    private final Bot saveliy = new SaveliyBot();
 
-    @BeforeClass
-    public void before(){
-        setDriver();
-    }
 
     @Test
     public void testSearchFriend() throws InterruptedException {
-        test = extent.createTest(this.getClass().getSimpleName());
-
         FriendsPage friendsPage = getLoginPage()
                 .doLogin(saveliy)
                 .getToolbar()
@@ -46,14 +40,13 @@ public class CheckSearchFriend extends BaseTests {
             List<FriendIconAfterSearchOnFriends> friendsIconAfterSearch = friendsPage.getFriendsIconAfterSearchOnFriends();
             Stream<FriendIconAfterSearchOnFriends> stream = friendsIconAfterSearch.stream();
             if (stream.allMatch(s -> s.isName(name))) {
-                test.log(Status.FAIL, "Не работает поиск друзей");
                 Assert.fail("Поиск друзей не работает");
             }
         }
     }
 
     @AfterClass
-    public void after()  {
+    public void after() {
         driver.quit();
         test.log(Status.DEBUG, "After метод успешно отработал");
     }

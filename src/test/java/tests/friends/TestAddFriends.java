@@ -25,58 +25,64 @@ import tests.BaseTests;
 Удаляем друга
  */
 public class TestAddFriends extends BaseTests {
-    Bot bot1 = new TechoBot5();
-    Bot bot2 = new TechoBot6();
+    private final Bot bot1 = new TechoBot5();
+    private final Bot bot2 = new TechoBot6();
 
-    @BeforeTest
-    public void before(){
-        setDriver();
-    }
 
     @Test(priority = 2)
     public void testAddFriend() throws InterruptedException {
-        test = extent.createTest(this.getClass().getSimpleName());
         driver.get("https://ok.ru/");
 
         LoginPage loginPage = new LoginPage(driver);
         loginPage.doLogin(bot1);
-
+        test.log(Status.DEBUG, "Логин bot1");
 
         driver.get(bot2.getProfileUrl());
+        test.log(Status.DEBUG, "Переход на страницу bot2");
         PeoplePage peoplePage = new PeoplePage(driver);
-        FriendsPage friendsPage = peoplePage.addFriend()
+        peoplePage.addFriend()
                 .getToolbar()
-                .exit()
-                .doLogin(bot2)
+                .exit();
+        test.log(Status.DEBUG, "Логаут bot1");
+        FriendsPage friendsPage = loginPage.doLogin(bot2)
                 .getToolbar()
                 .clickToFriends();
+        test.log(Status.DEBUG, "Логин bot2 и переход во вкладку ДРУЗЬЯ");
         friendsPage.clickToFriendRequests()
                 .checkFriendByURLOnFriendRequests(bot1.getId())
                 .addFriend();
+        test.log(Status.DEBUG, "Подтверждение запроса в друзья от bot1 к bot2");
         friendsPage.clickToAllFriends()
                 .getFriendsIcon(bot1.getId());
         LoginPage loginPage2 = friendsPage.getToolbar()
                 .exit();
+        test.log(Status.DEBUG, "Логаут bot2. Уже устал писать слишком подробные логи");
         loginPage2.doLogin(bot1)
                 .getToolbar()
                 .clickToFriends()
                 .getFriendsIcon(bot2.getId());
+        test.log(Status.DEBUG, "Логин bot1. Проверка наличия в друзьях bot2");
     }
 
     @AfterClass
-    public void deleteFriend(){
+    public void deleteFriend() {
         getLoginPage().doLogin(bot1);
+        test.log(Status.DEBUG, "Логин bot1");
         driver.get(bot2.getProfileUrl());
+        test.log(Status.DEBUG, "Переход на страницу bot2");
+
         PeoplePage bot2Page = new PeoplePage(driver);
-        if(bot2Page.isFriendRequestSended()){
+        if (bot2Page.isFriendRequestSended()) {
             bot2Page.removingFriendRequests();
-        } else if (bot2Page.isFriend()){
+            test.log(Status.DEBUG, "Удаление запроса в друзья от bot2");
+        } else if (bot2Page.isFriend()) {
             bot2Page.getToolbar()
                     .clickToFriends()
                     .getFriendsIcon(bot2.getId())
                     .deleteFriend();
+            test.log(Status.DEBUG, "Удаление bot2 из друзей");
         }
         driver.quit();
-        test.log(Status.DEBUG, "After метод успешно отработал");
+        test.log(Status.DEBUG, "After метод успешно отработал.");
     }
 }

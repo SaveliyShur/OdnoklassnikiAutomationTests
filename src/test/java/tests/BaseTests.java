@@ -9,10 +9,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.ITestResult;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.AfterSuite;
-import org.testng.annotations.BeforeSuite;
-import org.testng.annotations.BeforeTest;
+import org.testng.annotations.*;
 import pages.LoginPage;
 import pages.ToolBar;
 
@@ -20,11 +17,11 @@ import java.util.concurrent.TimeUnit;
 
 
 abstract public class BaseTests {
-    public WebDriver driver ;
-    public static long TIME_WAIT = 10;
-    public static ExtentHtmlReporter htmlReporter;
-    public static ExtentReports extent;
-    public ExtentTest test;
+    protected WebDriver driver ;
+    public final static long TIME_WAIT = 10;
+    protected static ExtentHtmlReporter htmlReporter;
+    protected static ExtentReports extent;
+    protected ExtentTest test;
 
     private static final By TOOLBAR = By.xpath("//*[@class='toolbar']");
 
@@ -35,9 +32,10 @@ abstract public class BaseTests {
         extent.attachReporter(htmlReporter);
     }
 
-    @BeforeTest
+    @BeforeClass
     public void before(){
         setDriver();
+        test = extent.createTest(this.getClass().getSimpleName());
     }
 
     @AfterMethod
