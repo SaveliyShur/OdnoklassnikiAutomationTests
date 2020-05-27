@@ -12,6 +12,7 @@ import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeSuite;
+import org.testng.annotations.BeforeTest;
 import pages.LoginPage;
 import pages.ToolBar;
 
@@ -19,11 +20,11 @@ import java.util.concurrent.TimeUnit;
 
 
 abstract public class BaseTests {
-    public static WebDriver driver ;
+    public WebDriver driver ;
     public static long TIME_WAIT = 10;
     public static ExtentHtmlReporter htmlReporter;
     public static ExtentReports extent;
-    public static ExtentTest test;
+    public ExtentTest test;
 
     private static final By TOOLBAR = By.xpath("//*[@class='toolbar']");
 
@@ -32,6 +33,11 @@ abstract public class BaseTests {
         htmlReporter = new ExtentHtmlReporter("report.html");
         extent = new ExtentReports();
         extent.attachReporter(htmlReporter);
+    }
+
+    @BeforeTest
+    public void before(){
+        setDriver();
     }
 
     @AfterMethod
@@ -52,7 +58,7 @@ abstract public class BaseTests {
     }
 
     protected void setDriver(){
-        System.setProperty("webdriver.chrome.driver", "C:\\configs\\cromedriver\\chromedriver.exe");
+        System.setProperty("webdriver.chrome.driver", "C:\\Users\\Grabar\\Desktop\\chromedriver.exe");
         driver = new ChromeDriver();
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(TIME_WAIT, TimeUnit.SECONDS);

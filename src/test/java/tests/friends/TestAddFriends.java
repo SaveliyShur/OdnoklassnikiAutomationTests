@@ -3,8 +3,9 @@ package tests.friends;
 import bot.Bot;
 import bot.TechoBot5;
 import bot.TechoBot6;
+import com.aventstack.extentreports.Status;
 import org.testng.annotations.AfterClass;
-import org.testng.annotations.BeforeClass;
+import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 import pages.FriendsPage;
@@ -27,17 +28,19 @@ public class TestAddFriends extends BaseTests {
     Bot bot1 = new TechoBot5();
     Bot bot2 = new TechoBot6();
 
-    @BeforeClass
+    @BeforeTest
     public void before(){
         setDriver();
     }
 
-    @Test
+    @Test(priority = 2)
     public void testAddFriend() throws InterruptedException {
         test = extent.createTest(this.getClass().getSimpleName());
+        driver.get("https://ok.ru/");
 
-        LoginPage loginPage = getLoginPage();
+        LoginPage loginPage = new LoginPage(driver);
         loginPage.doLogin(bot1);
+
 
         driver.get(bot2.getProfileUrl());
         PeoplePage peoplePage = new PeoplePage(driver);
@@ -62,7 +65,6 @@ public class TestAddFriends extends BaseTests {
 
     @AfterClass
     public void deleteFriend(){
-        LoginPage loginPage = getLoginPage();
         getLoginPage().doLogin(bot1);
         driver.get(bot2.getProfileUrl());
         PeoplePage bot2Page = new PeoplePage(driver);
@@ -75,5 +77,6 @@ public class TestAddFriends extends BaseTests {
                     .deleteFriend();
         }
         driver.quit();
+        test.log(Status.DEBUG, "After метод успешно отработал");
     }
 }

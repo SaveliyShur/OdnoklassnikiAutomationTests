@@ -2,6 +2,7 @@ package tests.friends;
 
 import bot.Bot;
 import bot.SaveliyBot;
+import com.aventstack.extentreports.Status;
 import org.testng.Assert;
 import org.testng.annotations.*;
 import pages.FriendsPage;
@@ -37,12 +38,15 @@ public class CheckSearchFriend extends BaseTests {
                 .doLogin(saveliy)
                 .getToolbar()
                 .clickToFriends();
+        test.log(Status.DEBUG, "Перешли на страницу друзей Савелия");
         List<String> namesFriends = friendsPage.getNamesFriends();
+        test.log(Status.DEBUG, "Получили список его друзей");
         for (String name : namesFriends) {
             friendsPage.findFriend(name);
             List<FriendIconAfterSearchOnFriends> friendsIconAfterSearch = friendsPage.getFriendsIconAfterSearchOnFriends();
             Stream<FriendIconAfterSearchOnFriends> stream = friendsIconAfterSearch.stream();
             if (stream.allMatch(s -> s.isName(name))) {
+                test.log(Status.FAIL, "Не работает поиск друзей");
                 Assert.fail("Поиск друзей не работает");
             }
         }
@@ -51,5 +55,6 @@ public class CheckSearchFriend extends BaseTests {
     @AfterClass
     public void after()  {
         driver.quit();
+        test.log(Status.DEBUG, "After метод успешно отработал");
     }
 }

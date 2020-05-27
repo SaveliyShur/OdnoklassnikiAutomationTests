@@ -39,16 +39,20 @@ public class TestAddFriendRequest extends BaseTests {
         setDriver();
     }
 
-    @Test
+    @Test(priority = 1)
     public void testAddFriend() throws InterruptedException {
         test = extent.createTest(this.getClass().getSimpleName());
 
+        test.log(Status.INFO, "Логинимся");
         LoginPage loginPage = getLoginPage();
         loginPage.doLogin(bot1);
+        test.log(Status.INFO, "Залогинились");
 
         driver.get(bot2.getProfileUrl());
+        test.log(Status.INFO, "Перешли на страницу бота2");
         PeoplePage peoplePage = new PeoplePage(driver);
         Assert.assertTrue(peoplePage.addFriend().isFriendRequestSended(), "Отправление запроса в друзья. Проверка на странице друга");
+        test.log(Status.INFO, "Отправили запрос в друзья");
         FriendsPage friendsPage = peoplePage.getToolbar()
                 .clickToFriends();
         friendsPage.clickToOutGoingFriendRequests()
@@ -71,5 +75,6 @@ public class TestAddFriendRequest extends BaseTests {
         PeoplePage peoplePage = new PeoplePage(driver);
         peoplePage.removingFriendRequests();
         driver.quit();
+        test.log(Status.DEBUG, "After метод успешно отработал");
     }
 }
