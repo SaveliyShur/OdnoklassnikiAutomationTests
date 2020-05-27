@@ -7,7 +7,7 @@ import org.openqa.selenium.WebElement;
 
 import java.util.concurrent.TimeUnit;
 
-import static tests.BaseTests.TIME_WAIT;
+import static tests.BaseTest.TIME_WAIT;
 
 abstract public class BaseWrapper {
     protected  WebElement icon;

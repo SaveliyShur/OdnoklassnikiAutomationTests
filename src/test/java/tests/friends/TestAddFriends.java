@@ -5,14 +5,11 @@ import bot.TechoBot5;
 import bot.TechoBot6;
 import com.aventstack.extentreports.Status;
 import org.testng.annotations.AfterClass;
-import org.testng.annotations.AfterTest;
-import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 import pages.FriendsPage;
 import pages.LoginPage;
 import pages.PeoplePage;
-import pages.ToolBar;
-import tests.BaseTests;
+import tests.BaseTest;
 
 /*
 заходим на страницу к другу
@@ -24,7 +21,7 @@ import tests.BaseTests;
 Проверяем наличие друга в друзях
 Удаляем друга
  */
-public class TestAddFriends extends BaseTests {
+public class TestAddFriends extends BaseTest {
     private final Bot bot1 = new TechoBot5();
     private final Bot bot2 = new TechoBot6();
 

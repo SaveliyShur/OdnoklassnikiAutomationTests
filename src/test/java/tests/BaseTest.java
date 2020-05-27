@@ -2,10 +2,14 @@ package tests;
 
 import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
+import com.aventstack.extentreports.Status;
 import com.aventstack.extentreports.markuputils.ExtentColor;
 import com.aventstack.extentreports.markuputils.MarkupHelper;
 import com.aventstack.extentreports.reporter.ExtentHtmlReporter;
+import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.By;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.ITestResult;
@@ -13,10 +17,12 @@ import org.testng.annotations.*;
 import pages.LoginPage;
 import pages.ToolBar;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 
 
-abstract public class BaseTests {
+abstract public class BaseTest {
     protected WebDriver driver ;
     public final static long TIME_WAIT = 10;
     protected static ExtentHtmlReporter htmlReporter;
@@ -42,6 +48,7 @@ abstract public class BaseTests {
     public void getResult(ITestResult result) {
         if (result.getStatus() == ITestResult.FAILURE) {
             test.fail(MarkupHelper.createLabel(result.getName() + "failed", ExtentColor.RED));
+            takeScreenshot(result);
             test.fail(result.getThrowable());
         } else if (result.getStatus() == ITestResult.SUCCESS) {
             test.pass(MarkupHelper.createLabel(result.getName() + "passed", ExtentColor.GREEN));
@@ -72,5 +79,18 @@ abstract public class BaseTests {
             toolBar.exit();
             return new LoginPage(driver);
         }
+    }
+
+    protected String takeScreenshot(ITestResult result) {
+        TakesScreenshot takesScreenshot = (TakesScreenshot) driver;
+        File screenshot = takesScreenshot.getScreenshotAs(OutputType.FILE);
+        String path = "./src/screenshots/" + result.getName() + ".png";
+        File dest = new File(path);
+        try {
+            FileUtils.copyFile(screenshot, dest);
+        } catch (IOException e) {
+            test.log(Status.ERROR, e.getMessage());
+        }
+        return path;
     }
 }
