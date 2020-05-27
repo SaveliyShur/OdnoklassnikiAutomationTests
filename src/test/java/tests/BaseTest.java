@@ -88,6 +88,7 @@ abstract public class BaseTest {
         File dest = new File(path);
         try {
             FileUtils.copyFile(screenshot, dest);
+            test.log(Status.DEBUG, "Скриншот: " + dest.getName());
         } catch (IOException e) {
             test.log(Status.ERROR, e.getMessage());
         }
