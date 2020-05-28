@@ -13,11 +13,11 @@ import static java.lang.Thread.sleep;
 
 public  class ToolBar extends BasePage {
 
-    private static final By arrowToDown = By.xpath(".//*[@class='svg-ic svg-ico_mini_down_16']");
-    private static final By clickToFriends = By.xpath(".//*[@id='hook_Block_HeaderTopFriendsInToolbar']");
-    private static final By searchLocator = By.xpath(".//input[@placeholder = 'Поиск']");
-    private static final By searchPanel = By.xpath("//*[@class = 'suggest-ul__a0i64']");
-    private static final By searchIcon = By.xpath(".//*[@class = 'user-card-wrapper__mpodh']");
+    private static final By ARROW_TO_DOWN = By.xpath(".//*[@class='svg-ic svg-ico_mini_down_16']");
+    private static final By CLICK_TO_FRIENDS = By.xpath(".//*[@id='hook_Block_HeaderTopFriendsInToolbar']");
+    private static final By SEARCH_LOCATOR = By.xpath(".//input[@placeholder = 'Поиск']");
+    private static final By SEARCH_PANEL = By.xpath("//*[@class = 'suggest-ul__a0i64']");
+    private static final By SEARCH_ICON = By.xpath(".//*[@class = 'user-card-wrapper__mpodh']");
 
     private WebElement toolbar;
 
@@ -27,21 +27,21 @@ public  class ToolBar extends BasePage {
     }
 
     public LoginPage exit(){
-        toolbar.findElement(arrowToDown).click();
+        toolbar.findElement(ARROW_TO_DOWN).click();
         ArrowToDownLayers arrowToDownLayers = new ArrowToDownLayers();
         arrowToDownLayers.exit();
         return new LoginPage(driver);
     }
 
     public FriendsPage clickToFriends()  {
-        toolbar.findElement(clickToFriends).click();
+        toolbar.findElement(CLICK_TO_FRIENDS).click();
         return new FriendsPage(driver);
     }
 
     public void search(String name){
-        toolbar.findElement(searchLocator).sendKeys(name);
-        Assert.assertTrue(isElementPresent(searchPanel), "Список друзей не выпал");
-        List<WebElement> iconSearch = driver.findElement(searchPanel).findElements(searchIcon);
+        toolbar.findElement(SEARCH_LOCATOR).sendKeys(name);
+        Assert.assertTrue(isElementPresent(SEARCH_PANEL), "Список друзей не выпал");
+        List<WebElement> iconSearch = driver.findElement(SEARCH_PANEL).findElements(SEARCH_ICON);
         List<IconSearhInToolbarWrapper> iconSearchWrap = Transformer.wrap(iconSearch, driver, IconSearhInToolbarWrapper.class);
         // TODO: 20.05.2020 return
     }

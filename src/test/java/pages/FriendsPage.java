@@ -2,11 +2,9 @@ package pages;
 
 
 import org.openqa.selenium.*;
+import org.openqa.selenium.interactions.Actions;
 import org.testng.Assert;
-import pages.wrappers.FriendIconAfterSearchOnFriends;
-import pages.wrappers.FriendsIconWrapper;
-import pages.wrappers.IconFriendRequestOnFriends;
-import pages.wrappers.Transformer;
+import pages.wrappers.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,26 +12,31 @@ import java.util.List;
 
 public class FriendsPage extends BasePage  {
 
-    private static final By searchInFriends = By.xpath("//*[@placeholder='Поиск среди друзей']");
-    private static final By frameWishFriends = By.xpath("//*[@id='hook_Block_MyFriendsSquareCardsPagingB']");
-    private static final By iconFriend = By.xpath(".//*[@class = 'ugrid_i']");
+    private static final By SEARCH_IN_FRIENDS = By.xpath("//*[@placeholder='Поиск среди друзей']");
+    private static final By FRAME_WISH_FRIENDS = By.xpath("//*[@id='hook_Block_MyFriendsSquareCardsPagingB']");
+    private static final By ICON_FRIEND = By.xpath(".//*[@class = 'ugrid_i']");
     private static final By TOOLBAR = By.xpath("//*[@class='toolbar']");
-    private static final By leftToolbarForNavigationFriends = By.xpath("//*[@id='UserFriendsCatalogRB']");
-    private static final By AllFriends = By.xpath(".//*[contains(text(), 'Все')]");
-    private static final By FriendRequests = By.xpath(".//*[contains(@href, '/friendRequests')]");
-    private static final By OutgoingFriendRequests = By.xpath(".//*[contains(text(), 'Исходящие заявки в друзья')]");
-    private static final By IconFriendRequestLocator = By.xpath("//*[@class='ucard-w-list_i']");
+    private static final By LEFT_TOOLBAR_FOR_NAVIGATION_FRIENDS = By.xpath("//*[@id='UserFriendsCatalogRB']");
+    private static final By ALL_FRIENDS = By.xpath(".//*[contains(text(), 'Все')]");
+    private static final By FRIEND_REQUESTS = By.xpath(".//*[contains(@href, '/friendRequests')]");
+    private static final By OUTGOING_FRIEND_REQUESTS = By.xpath(".//*[contains(text(), 'Исходящие заявки в друзья')]");
+    private static final By ICON_FRIEND_REQUEST_LOCATOR = By.xpath("//*[@class='ucard-w-list_i']");
     private static final By ICON_FRIEND_AFTER_SEARCH = By.xpath("//*[@class='gs_result_list']//*[contains(@class, 'gs_result_i_w')]");
-    private static final By frameWishSearchFriends = By.xpath("//*[@id='hook_Block_MyFriendsFriendSearchPagingB']");
-    private static final By CROSS_IN_SEARCH_LINE = By.xpath("//*[@class = 'search-input_ic ic curPointer ic_close-g']");
+    private static final By FRAME_WISH_SEARCH_FRIENDS = By.xpath("//*[@id='hook_Block_MyFriendsFriendSearchPagingB']");
+    private static final By My_SUBSCRIPTION = By.xpath(".//*[contains(text(), 'Мои подписки')]");
+    private static final By RECOMMENDED_SUBSCRIPTIONS = By.xpath("//*[@id = 'listBlockPanelUserSubscriptionsStarListMRB']");
+    private static final By CARDS_RECOMMENDED_SUBSCRIPTION = By.xpath(".//*[@class='ugrid_i']");
+    private static final By MY_SUBSCRIPTION_FRAME = By.xpath("//*[@class='ugrid_cnt']");
+    private static final By MY_SUBSCRIPTION_PEOPLE = By.xpath(".//*[@class='ugrid_i']");
+
     public FriendsPage(WebDriver driver) {
         super(driver);
     }
 
     @Override
     void check(WebDriver driver) {
-        assertLocator(driver, leftToolbarForNavigationFriends);
-        assertLocator(driver, frameWishFriends);
+        assertLocator(driver, LEFT_TOOLBAR_FOR_NAVIGATION_FRIENDS);
+        assertLocator(driver, FRAME_WISH_FRIENDS);
     }
 
     public ToolBar getToolbar(){
@@ -43,27 +46,35 @@ public class FriendsPage extends BasePage  {
     }
 
     public FriendsPage findFriend(String name) {
-        driver.findElement(searchInFriends).clear();
-        driver.findElement(searchInFriends).sendKeys(Keys.ENTER);
-        assertLocator(driver,frameWishFriends);
-        driver.findElement(searchInFriends).sendKeys(name);
-        assertLocator(driver,frameWishSearchFriends);
+        driver.findElement(SEARCH_IN_FRIENDS).clear();
+        driver.findElement(SEARCH_IN_FRIENDS).sendKeys(Keys.ENTER);
+        assertLocator(driver, FRAME_WISH_FRIENDS);
+        driver.findElement(SEARCH_IN_FRIENDS).sendKeys(name);
+        assertLocator(driver, FRAME_WISH_SEARCH_FRIENDS);
         return this;
     }
 
 
     public FriendsPage clickToAllFriends() {
-        driver.findElement(leftToolbarForNavigationFriends).findElement(AllFriends).click();
+        driver.findElement(LEFT_TOOLBAR_FOR_NAVIGATION_FRIENDS).findElement(ALL_FRIENDS).click();
         return this;
     }
 
+    public FriendsPage clickToMySubscription() {
+        driver.findElement(LEFT_TOOLBAR_FOR_NAVIGATION_FRIENDS).findElement(My_SUBSCRIPTION).click();
+        assertLocator(driver,RECOMMENDED_SUBSCRIPTIONS);
+        return this;
+    }
+
+
+
     public FriendsPage clickToFriendRequests() {
-        driver.findElement(leftToolbarForNavigationFriends).findElement(FriendRequests).click();
+        driver.findElement(LEFT_TOOLBAR_FOR_NAVIGATION_FRIENDS).findElement(FRIEND_REQUESTS).click();
         return this;
     }
 
     public FriendsPage clickToOutGoingFriendRequests() {
-        driver.findElement(leftToolbarForNavigationFriends).findElement(OutgoingFriendRequests).click();
+        driver.findElement(LEFT_TOOLBAR_FOR_NAVIGATION_FRIENDS).findElement(OUTGOING_FRIEND_REQUESTS).click();
         return this;
     }
 
@@ -78,10 +89,6 @@ public class FriendsPage extends BasePage  {
         return null;
     }
 
-
-    public String checkFindFriend(){
-        return driver.findElement(By.xpath("//*[@id='searchResults']/div[1]/div[2]/span")).getText();
-    }
 
     public FriendsIconWrapper getFriendsIcon(String id){
         List<FriendsIconWrapper> friends = getFriendsIconOnBaseFriendsPageList();
@@ -109,21 +116,28 @@ public class FriendsPage extends BasePage  {
         return nameFriends;
     }
 
+    public List<RecommendedSubscriptionIconWrapper> getRecommendedPeoples(){
+        List<WebElement> elements = driver.findElement(RECOMMENDED_SUBSCRIPTIONS).findElements(CARDS_RECOMMENDED_SUBSCRIPTION);
+        Assert.assertTrue(!elements.isEmpty(), "Рекомендованных подписок нет!");
+        List<RecommendedSubscriptionIconWrapper> icons = Transformer.wrap(elements,driver,RecommendedSubscriptionIconWrapper.class);
+        return icons;
+    }
+
+    public List<MySubscriptionWrapper> getMySubscriptionWrappers(){
+        List<WebElement> elements = driver.findElement(MY_SUBSCRIPTION_FRAME).findElements(MY_SUBSCRIPTION_PEOPLE);
+        List<MySubscriptionWrapper> icons = Transformer.wrap(elements, driver, MySubscriptionWrapper.class);
+        return icons;
+    }
+
     private List<IconFriendRequestOnFriends> getIconsFriendRequestOnToOutgoingFriendRequests(){
-        // TODO: 27.05.2020 Oleg Надо добавить лог что заявок нет, при их отсутсвии ниже написан лог через ассерты перепиши
-        Assert.assertTrue(isElementPresent(IconFriendRequestLocator), "Отсутсвуют заявки");
-        List<WebElement> elements = driver.findElements(IconFriendRequestLocator);
+        List<WebElement> elements = driver.findElements(ICON_FRIEND_REQUEST_LOCATOR);
         List<IconFriendRequestOnFriends> icons = Transformer.wrap(elements,driver, IconFriendRequestOnFriends.class);
-        Assert.assertTrue(!elements.isEmpty(), "Нет заявок у человека");
         return icons;
     }
 
     private List<FriendsIconWrapper> getFriendsIconOnBaseFriendsPageList(){
-        // TODO: 27.05.2020 Oleg Надо добавить лог что друзей нет, при их отсутсвии ниже написан лог через ассерты перепиши
-        Assert.assertTrue(isElementPresent(frameWishFriends), "Друзья не появились");
-        List<WebElement> elements = driver.findElement(frameWishFriends).findElements(iconFriend);
+        List<WebElement> elements = driver.findElement(FRAME_WISH_FRIENDS).findElements(ICON_FRIEND);
         List<FriendsIconWrapper> icons  = Transformer.wrap(elements,driver,FriendsIconWrapper.class);
-        Assert.assertTrue(!elements.isEmpty(), "Нет друзей у человека");
         return icons;
     }
 

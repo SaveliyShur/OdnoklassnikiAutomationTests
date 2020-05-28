@@ -4,6 +4,9 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedCondition;
+import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
 
 import java.util.concurrent.TimeUnit;
 
@@ -54,6 +57,12 @@ abstract public class BaseWrapper {
         } catch (NoSuchElementException e) {
             return false;
         }
+    }
+
+    public void assertLocator(WebDriver driver, By xpath) {
+        Assert.assertTrue(
+                new WebDriverWait(driver, 10).
+                        until((ExpectedCondition<Boolean>) d -> isElementPresent(xpath)), "Элемент не найден");
     }
 
 }

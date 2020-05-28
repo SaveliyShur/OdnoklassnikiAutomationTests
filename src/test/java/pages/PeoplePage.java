@@ -38,7 +38,7 @@ public class PeoplePage extends BasePage  implements PeoplePageInterface{
         Assert.assertTrue(isElementMiss(REQUEST_IS_SENDED), "Уже отправлен запрос на добавление");
         Assert.assertTrue(isElementMiss(ALLREADY_FRIENDS), "Уже есть в друзьях");
         driver.findElement(ADD_TO_FRIENDS).click();
-        return new PeoplePage(driver);
+        return this;
     }
 
     @Override
@@ -54,8 +54,7 @@ public class PeoplePage extends BasePage  implements PeoplePageInterface{
         assertLocator(driver, REMOVING_FRIEND_REQUEST);
         Assert.assertTrue(isElementPresent(REMOVING_FRIEND_REQUEST), "Не видно кнопки отменить запрос");
         driver.findElement(REMOVING_FRIEND_REQUEST).click();
-
-        return new PeoplePage(driver);
+        return this;
     }
 
     @Override

@@ -22,6 +22,7 @@ abstract public class BaseTests {
     protected static ExtentHtmlReporter htmlReporter;
     protected static ExtentReports extent;
     protected ExtentTest test;
+    private String SaveliyPath = "C:\\configs\\cromedriver\\chromedriver.exe";
 
     private static final By TOOLBAR = By.xpath("//*[@class='toolbar']");
 
@@ -56,7 +57,7 @@ abstract public class BaseTests {
     }
 
     protected void setDriver(){
-        System.setProperty("webdriver.chrome.driver", "C:\\Users\\Grabar\\Desktop\\chromedriver.exe");
+        System.setProperty("webdriver.chrome.driver", SaveliyPath);
         driver = new ChromeDriver();
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(TIME_WAIT, TimeUnit.SECONDS);

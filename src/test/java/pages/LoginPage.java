@@ -6,9 +6,9 @@ import org.openqa.selenium.WebDriver;
 
 public class LoginPage extends BasePage {
 
-    private static final By loginField = By.xpath("//input[@name='st.email']");
-    private static final By passwordField = By.xpath("//input[@type='password']");
-    private static final By clickComeIn = By.xpath("//input[@value = 'Войти в Одноклассники']");
+    private static final By LOGIN_FIELD = By.xpath("//input[@name='st.email']");
+    private static final By PASSWORD_FIELD = By.xpath("//input[@type='password']");
+    private static final By CLICK_COME_IN = By.xpath("//input[@value = 'Войти в Одноклассники']");
 
     public LoginPage(WebDriver driver) {
         super(driver);
@@ -17,17 +17,17 @@ public class LoginPage extends BasePage {
 
     @Override
     void check(WebDriver driver) {
-        assertLocator(driver,  loginField);
-        assertLocator(driver,  passwordField);
-        assertLocator(driver,  clickComeIn);
+        assertLocator(driver, LOGIN_FIELD);
+        assertLocator(driver, PASSWORD_FIELD);
+        assertLocator(driver, CLICK_COME_IN);
     }
 
     public HomePage doLogin(Bot bot){
-        driver.findElement(loginField).clear();
-        driver.findElement(passwordField).clear();
-        driver.findElement(loginField).sendKeys(bot.getLogin());
-        driver.findElement(passwordField).sendKeys(bot.getPassword());
-        driver.findElement(clickComeIn).click();
+        driver.findElement(LOGIN_FIELD).clear();
+        driver.findElement(PASSWORD_FIELD).clear();
+        driver.findElement(LOGIN_FIELD).sendKeys(bot.getLogin());
+        driver.findElement(PASSWORD_FIELD).sendKeys(bot.getPassword());
+        driver.findElement(CLICK_COME_IN).click();
         return new HomePage(driver);
     }
 

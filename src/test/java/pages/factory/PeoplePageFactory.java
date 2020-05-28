@@ -11,10 +11,11 @@ public class PeoplePageFactory {
     private static final By CLOSE_PAGE = By.xpath("//*[@id='frFriendsPanel=']//*[text() = 'Информация доступна только друзьям']");
 
     public static PeoplePageInterface getPeoplePage(WebDriver driver){
-        if(isElementPresent(CLOSE_PAGE, driver)){
-            return new ClosePeoplePage(driver);
+        if(!isElementPresent(CLOSE_PAGE, driver)){
+            return new PeoplePage(driver);
+
         }
-        return new PeoplePage(driver);
+        return new ClosePeoplePage(driver);
     }
 
     // TODO: 22.05.2020 Необходимо ускорить процес отдачи страницы 

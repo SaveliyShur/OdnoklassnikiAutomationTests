@@ -31,9 +31,7 @@ public class TestAddFriends extends BaseTests {
 
     @Test(priority = 2)
     public void testAddFriend() throws InterruptedException {
-        driver.get("https://ok.ru/");
-
-        LoginPage loginPage = new LoginPage(driver);
+        LoginPage loginPage = getLoginPage();
         loginPage.doLogin(bot1);
         test.log(Status.DEBUG, "Логин bot1");
 

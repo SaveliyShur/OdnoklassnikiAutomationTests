@@ -12,12 +12,12 @@ import pages.FriendsPage;
 import static java.lang.Thread.sleep;
 
 public class FriendsIconWrapper extends BaseWrapper{
-    private static final By stopFriends = By.xpath("//*[@id='hook_Block_MainContainer']/div[6]/table/tbody/tr/td/div/div/div[1]/div/div[7]/ul/li/a/span");
+    private static final By STOP_FRIENDS = By.xpath("//*[@id='hook_Block_MainContainer']/div[6]/table/tbody/tr/td/div/div/div[1]/div/div[7]/ul/li/a/span");
     private static final By LAYER = By.xpath("//*[@class = 'ic_delete']");
     private static final By YES = By.xpath("//*[@value='Прекратить']");
 
-    private static final By avatarIcon = By.xpath(".//*[@class = 'user-grid-card_img']");
-    private static final By name = By.xpath(".//*[@class = 'n-t bold']");
+    private static final By AVATAR_ICON = By.xpath(".//*[@class = 'user-grid-card_img']");
+    private static final By NAME = By.xpath(".//*[@class = 'n-t bold']");
 
     public FriendsIconWrapper(WebElement icon, WebDriver driver) {
         super(icon, driver);
@@ -27,7 +27,7 @@ public class FriendsIconWrapper extends BaseWrapper{
 
     public MoveToAvatarLayer moveToAvatar(){
 
-        WebElement avatar = icon.findElement(avatarIcon);
+        WebElement avatar = icon.findElement(AVATAR_ICON);
         Actions moveToAvatar = new Actions(driver);
         moveToAvatar.moveToElement(avatar).build().perform();
 
@@ -35,7 +35,7 @@ public class FriendsIconWrapper extends BaseWrapper{
     }
 
     public String getName(){
-        return icon.findElement(name).getText();
+        return icon.findElement(NAME).getText();
     }
 
     public boolean isID(String id){
@@ -46,7 +46,7 @@ public class FriendsIconWrapper extends BaseWrapper{
     }
 
     public FriendsPage deleteFriend(){
-        MoveToAvatarLayer moveToAvatarLayer = new MoveToAvatarLayer(icon.findElement(avatarIcon));
+        MoveToAvatarLayer moveToAvatarLayer = new MoveToAvatarLayer(icon.findElement(AVATAR_ICON));
         moveToAvatarLayer.stopFriends();
         return new FriendsPage(driver);
     }
@@ -64,7 +64,7 @@ public class FriendsIconWrapper extends BaseWrapper{
         public void stopFriends() {
             act.moveToElement(avatar).build().perform();
             assertLocator(driver,LAYER);
-            driver.findElement(stopFriends).click();
+            driver.findElement(STOP_FRIENDS).click();
             driver.findElement(YES).click();
         }
 
