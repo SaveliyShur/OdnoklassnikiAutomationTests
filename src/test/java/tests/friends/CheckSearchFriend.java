@@ -26,7 +26,7 @@ public class CheckSearchFriend extends BaseTest {
 
 
     @Test
-    public void testSearchFriend() throws InterruptedException {
+    public void testSearchFriend()  {
         FriendsPage friendsPage = getLoginPage()
                 .doLogin(saveliy)
                 .getToolbar()

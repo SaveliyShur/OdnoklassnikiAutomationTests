@@ -12,4 +12,5 @@ public interface PeoplePageInterface {
 
     ToolBar getToolbar();
 
+
 }

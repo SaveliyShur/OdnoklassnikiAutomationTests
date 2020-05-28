@@ -8,7 +8,7 @@ import pages.PeoplePage;
 import pages.PeoplePageInterface;
 
 public class PeoplePageFactory {
-    private static final By CLOSE_PAGE = By.xpath("//*[@id='frFriendsPanel=']//*[text() = 'Информация доступна только друзьям']");
+    private static final By CLOSE_PAGE = By.xpath("//*[@id='frFriendsPanel']//*[text() = 'Информация доступна только друзьям']");
 
     public static PeoplePageInterface getPeoplePage(WebDriver driver){
         if(!isElementPresent(CLOSE_PAGE, driver)){

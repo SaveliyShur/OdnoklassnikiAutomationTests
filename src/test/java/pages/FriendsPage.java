@@ -9,6 +9,8 @@ import pages.wrappers.*;
 import java.util.ArrayList;
 import java.util.List;
 
+import static java.lang.Thread.sleep;
+
 
 public class FriendsPage extends BasePage  {
 
@@ -78,7 +80,8 @@ public class FriendsPage extends BasePage  {
         return this;
     }
 
-    public IconFriendRequestOnFriends checkFriendByURLOnFriendRequests(String id){
+    public IconFriendRequestOnFriends checkFriendByURLOnFriendRequests(String id) throws InterruptedException {
+        sleep(2000);
         List<IconFriendRequestOnFriends> elements = getIconsFriendRequestOnToOutgoingFriendRequests();
         for (IconFriendRequestOnFriends element : elements){
             if(element.isID(id)){

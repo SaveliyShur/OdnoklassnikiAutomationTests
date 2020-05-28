@@ -75,8 +75,10 @@ abstract public class BaseTest {
         driver.get("https://ok.ru/");
         driver.manage().timeouts().implicitlyWait(0, TimeUnit.SECONDS);
         if(driver.findElements(TOOLBAR).size() == 0){
+            driver.manage().timeouts().implicitlyWait(TIME_WAIT, TimeUnit.SECONDS);
             return new LoginPage(driver);
         } else {
+            driver.manage().timeouts().implicitlyWait(TIME_WAIT, TimeUnit.SECONDS);
             ToolBar toolBar = new ToolBar(driver.findElement(TOOLBAR), driver);
             toolBar.exit();
             return new LoginPage(driver);
