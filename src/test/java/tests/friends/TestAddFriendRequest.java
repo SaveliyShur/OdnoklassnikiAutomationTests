@@ -2,16 +2,12 @@ package tests.friends;
 
 import bot.*;
 import com.aventstack.extentreports.Status;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
 import org.testng.annotations.*;
 import pages.FriendsPage;
 import pages.LoginPage;
 import pages.PeoplePage;
-import tests.BaseTests;
-
-import java.util.concurrent.TimeUnit;
+import tests.BaseTest;
 
 import static java.lang.Thread.sleep;
 
@@ -29,7 +25,7 @@ import static java.lang.Thread.sleep;
 Удаляет заявку
 */
 
-public class TestAddFriendRequest extends BaseTests {
+public class TestAddFriendRequest extends BaseTest {
 
     private final Bot bot1 = new TechoBot5();
     private final Bot bot2 = new TechoBot6();

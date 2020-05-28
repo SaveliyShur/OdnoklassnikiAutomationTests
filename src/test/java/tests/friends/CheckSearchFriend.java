@@ -6,9 +6,8 @@ import com.aventstack.extentreports.Status;
 import org.testng.Assert;
 import org.testng.annotations.*;
 import pages.FriendsPage;
-import pages.PeoplePage;
 import pages.wrappers.FriendIconAfterSearchOnFriends;
-import tests.BaseTests;
+import tests.BaseTest;
 
 import java.util.List;
 import java.util.stream.Stream;
@@ -21,7 +20,7 @@ import static java.lang.Thread.sleep;
 Ищем его по имени и фамилии
 Проверяем что он есть в результатах поиска
  */
-public class CheckSearchFriend extends BaseTests {
+public class CheckSearchFriend extends BaseTest {
 
     private final Bot saveliy = new SaveliyBot();
 
