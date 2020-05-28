@@ -24,19 +24,20 @@ public class TestAddClosePagePeople extends BaseTest {
         test.log(Status.DEBUG, "Логин Савелий, переход на страницу bot9");
         PeoplePageInterface pageCloseBotBeforeAdd = PeoplePageFactory.getPeoplePage(driver);
         Assert.assertTrue(!pageCloseBotBeforeAdd.isOpen(), "Страница человека оказалась открытой");
+        test.log(Status.DEBUG, "Проверили, что страница закрыта, отправили запрос в друзья");
         pageCloseBotBeforeAdd.addFriend();
         pageCloseBotBeforeAdd.getToolbar() // можно попробовать убрать
                 .exit();
         addFriend(botWishClosePage, botWhoAddNewFriend)
                 .getToolbar()
                 .exit();
-        test.log(Status.DEBUG, "Проверили, что страница закрыта, отправили запрос в друзья");
+
 
         LoginPage loginPage2 = getLoginPage();
         loginPage2.doLogin(botWhoAddNewFriend);
         driver.get(botWishClosePage.getProfileUrl());
         PeoplePageInterface pageCloseBotAfterAdd = PeoplePageFactory.getPeoplePage(driver);
-        Assert.assertTrue(!pageCloseBotAfterAdd.isOpen(), "Страница человека после добавления осталась закрытой");
+        Assert.assertTrue(pageCloseBotAfterAdd.getClass().equals(PeoplePage.class), "Страница человека после добавления осталась закрытой");
         test.log(Status.DEBUG, "Проверили, что страница открыта после добавления в друзья");
         pageCloseBotAfterAdd.getToolbar().exit();
     }

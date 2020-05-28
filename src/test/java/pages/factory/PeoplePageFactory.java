@@ -18,7 +18,6 @@ public class PeoplePageFactory {
         return new ClosePeoplePage(driver);
     }
 
-    // TODO: 22.05.2020 Необходимо ускорить процес отдачи страницы 
     private static boolean isElementPresent(By element, WebDriver driver) {
         try {
             driver.findElement(element).isDisplayed();

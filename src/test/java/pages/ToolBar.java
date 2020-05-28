@@ -43,7 +43,6 @@ public  class ToolBar extends BasePage {
         Assert.assertTrue(isElementPresent(SEARCH_PANEL), "Список друзей не выпал");
         List<WebElement> iconSearch = driver.findElement(SEARCH_PANEL).findElements(SEARCH_ICON);
         List<IconSearhInToolbarWrapper> iconSearchWrap = Transformer.wrap(iconSearch, driver, IconSearhInToolbarWrapper.class);
-        // TODO: 20.05.2020 return
     }
 
     @Override
