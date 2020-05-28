@@ -81,7 +81,6 @@ public class FriendsPage extends BasePage  {
     }
 
     public IconFriendRequestOnFriends checkFriendByURLOnFriendRequests(String id) throws InterruptedException {
-        sleep(2000);
         List<IconFriendRequestOnFriends> elements = getIconsFriendRequestOnToOutgoingFriendRequests();
         for (IconFriendRequestOnFriends element : elements){
             if(element.isID(id)){

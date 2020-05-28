@@ -24,16 +24,6 @@ public class FriendsIconWrapper extends BaseWrapper{
     }
 
 
-
-    public MoveToAvatarLayer moveToAvatar(){
-
-        WebElement avatar = icon.findElement(AVATAR_ICON);
-        Actions moveToAvatar = new Actions(driver);
-        moveToAvatar.moveToElement(avatar).build().perform();
-
-        return new MoveToAvatarLayer(avatar);
-    }
-
     public String getName(){
         return icon.findElement(NAME).getText();
     }

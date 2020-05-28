@@ -3,13 +3,7 @@ package pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.testng.Assert;
-import pages.wrappers.Transformer;
-import pages.wrappers.IconSearhInToolbarWrapper;
 
-import java.util.List;
-
-import static java.lang.Thread.sleep;
 
 public  class ToolBar extends BasePage {
 
@@ -36,13 +30,6 @@ public  class ToolBar extends BasePage {
     public FriendsPage clickToFriends()  {
         toolbar.findElement(CLICK_TO_FRIENDS).click();
         return new FriendsPage(driver);
-    }
-
-    public void search(String name){
-        toolbar.findElement(SEARCH_LOCATOR).sendKeys(name);
-        Assert.assertTrue(isElementPresent(SEARCH_PANEL), "Список друзей не выпал");
-        List<WebElement> iconSearch = driver.findElement(SEARCH_PANEL).findElements(SEARCH_ICON);
-        List<IconSearhInToolbarWrapper> iconSearchWrap = Transformer.wrap(iconSearch, driver, IconSearhInToolbarWrapper.class);
     }
 
     @Override
