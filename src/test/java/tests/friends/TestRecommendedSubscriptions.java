@@ -42,7 +42,7 @@ public class TestRecommendedSubscriptions extends BaseTest {
 
         Assert.assertTrue(numberPeople2-numberPeople == 1, "Дичь");
         List<MySubscriptionWrapper> listMySubscription3 = friendsPage.getMySubscriptionWrappers();
-        listMySubscription3.stream().forEach(s -> s.unsubscribe());
+        listMySubscription3.stream().filter(x -> x.getName().equals(name)).forEach(MySubscriptionWrapper::unsubscribe);
     }
 
     @AfterClass

@@ -7,14 +7,14 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
+import tests.BaseTest;
 
 import java.util.concurrent.TimeUnit;
-
-import static tests.BaseTest.TIME_WAIT;
 
 abstract public class BaseWrapper {
     protected  WebElement icon;
     protected WebDriver driver;
+    private static final long TIME_WAIT = BaseTest.getTimeWait();
 
     public BaseWrapper(WebElement icon, WebDriver driver) {
         this.icon = icon;

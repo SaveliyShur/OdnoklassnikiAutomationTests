@@ -24,11 +24,12 @@ import java.util.concurrent.TimeUnit;
 
 abstract public class BaseTest {
     protected WebDriver driver ;
-    public final static long TIME_WAIT = 10;
+    protected final static long TIME_WAIT = 10;
     protected static ExtentHtmlReporter htmlReporter;
     protected static ExtentReports extent;
     protected ExtentTest test;
-    private String SaveliyPath = "C:\\configs\\cromedriver\\chromedriver.exe";
+    private final String SaveliyPath = "C:\\configs\\cromedriver\\chromedriver.exe";
+    private final String OlegPath = "C:\\Users\\Grabar\\Desktop\\chromedriver.exe";
 
     private static final By TOOLBAR = By.xpath("//*[@class='toolbar']");
 
@@ -64,7 +65,7 @@ abstract public class BaseTest {
     }
 
     protected void setDriver(){
-        System.setProperty("webdriver.chrome.driver", SaveliyPath);
+        System.setProperty("webdriver.chrome.driver", OlegPath);
         driver = new ChromeDriver();
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(TIME_WAIT, TimeUnit.SECONDS);
@@ -94,5 +95,9 @@ abstract public class BaseTest {
             test.log(Status.ERROR, e.getMessage());
         }
         return path;
+    }
+
+    public static long getTimeWait() {
+        return TIME_WAIT;
     }
 }

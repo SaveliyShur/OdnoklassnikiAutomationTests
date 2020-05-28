@@ -25,24 +25,27 @@ import static java.lang.Thread.sleep;
 Прокручиваем страницу вниз
 Ждем появятся ли еще рекомендованные подписки и проверяем это
  */
-public class TestProcrutky extends BaseTest {
+public class TestScrolling extends BaseTest {
     Bot botOleg = new OlegBot();
 
     @Test
-    public void testProcrutky() throws InterruptedException {
+    public void testScrol() throws InterruptedException {
         LoginPage loginPage = getLoginPage();
         FriendsPage friendsPage = loginPage.doLogin(botOleg)
                 .getToolbar()
                 .clickToFriends()
                 .clickToMySubscription();
+        test.log(Status.DEBUG, "Залогинились на страницу Олега, перешли во вкладку Подписчики");
         List<RecommendedSubscriptionIconWrapper> elementsBeforeProcrutky = friendsPage.getRecommendedPeoples();
         int elementsBeforeSize = elementsBeforeProcrutky.size();
 
         JavascriptExecutor jse = (JavascriptExecutor) driver;
         jse.executeScript("window.scrollTo(0, document.body.scrollHeight);");
+        test.log(Status.DEBUG, "Скроллим");
 
         Assert.assertTrue(new WebDriverWait(driver,5)
                         .until((ExpectedCondition<Boolean>) d -> comparison(elementsBeforeSize,friendsPage.getRecommendedPeoples().size() )), "Новые рекомендованные подписки не появились");
+        test.log(Status.DEBUG, "При скроле появляются новые рекомендации по подпискам");
     }
 
     @AfterClass

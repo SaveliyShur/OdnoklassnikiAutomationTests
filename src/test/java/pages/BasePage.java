@@ -7,13 +7,13 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
-
+import tests.BaseTest;
 import java.util.concurrent.TimeUnit;
-
-import static tests.BaseTests.TIME_WAIT;
 
 abstract public class BasePage {
     WebDriver driver;
+
+    private static final long TIME_WAIT = BaseTest.getTimeWait();
 
     public BasePage(WebDriver driver) {
         this.driver = driver;
