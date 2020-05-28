@@ -6,11 +6,12 @@
             <class name="tests.friends.TestAddFriendRequest"> </class>
             <class name="tests.friends.TestAddFriends"> </class>
             <class name="tests.friends.TestRecommendedSubscriptions"> </class>
+            <class name="tests.friends.TestAddClosePagePeople"></class>
         </classes>
     </test>
     <test preserve-order="true" name= "Thread 2 tests">
         <classes>
-            <class name="tests.friends.CheckSearchFriend"> </class>
+            <class name="tests.friends.TestFriendsSearch"> </class>
             <class name="tests.TestFailed"> </class>
             <class name="tests.friends.TestScrolling"> </class>
         </classes>

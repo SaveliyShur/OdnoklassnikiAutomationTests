@@ -65,7 +65,7 @@ abstract public class BaseTest {
     }
 
     protected void setDriver(){
-        System.setProperty("webdriver.chrome.driver", SaveliyPath);
+        System.setProperty("webdriver.chrome.driver", OlegPath);
         driver = new ChromeDriver();
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(TIME_WAIT, TimeUnit.SECONDS);

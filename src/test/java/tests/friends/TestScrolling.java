@@ -26,7 +26,7 @@ import static java.lang.Thread.sleep;
 Ждем появятся ли еще рекомендованные подписки и проверяем это
  */
 public class TestScrolling extends BaseTest {
-    Bot botOleg = new OlegBot();
+    private final Bot botOleg = new OlegBot();
 
     @Test
     public void testScrol() throws InterruptedException {

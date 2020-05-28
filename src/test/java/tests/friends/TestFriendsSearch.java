@@ -20,13 +20,13 @@ import static java.lang.Thread.sleep;
 Ищем его по имени и фамилии
 Проверяем что он есть в результатах поиска
  */
-public class CheckSearchFriend extends BaseTest {
+public class TestFriendsSearch extends BaseTest {
 
     private final Bot saveliy = new SaveliyBot();
 
 
     @Test
-    public void testSearchFriend()  {
+    public void testFriendsSearch() throws InterruptedException {
         FriendsPage friendsPage = getLoginPage()
                 .doLogin(saveliy)
                 .getToolbar()

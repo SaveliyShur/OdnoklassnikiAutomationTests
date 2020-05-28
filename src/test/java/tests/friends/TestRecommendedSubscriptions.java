@@ -17,36 +17,45 @@ import java.util.List;
 import static java.lang.Thread.sleep;
 
 public class TestRecommendedSubscriptions extends BaseTest {
-    Bot botOleg = new SaveliyBot();
+    private final Bot botOleg = new SaveliyBot();
+    private FriendsPage friendsPage;
+    private String subscriptionName;
 
     @Test
     public void testRecommendedSubscriptions() throws InterruptedException {
         LoginPage loginPage = getLoginPage();
-        FriendsPage friendsPage =loginPage.doLogin(botOleg)
+        friendsPage =loginPage.doLogin(botOleg)
                 .getToolbar()
                 .clickToFriends()
                 .clickToMySubscription();
+        test.log(Status.DEBUG, "Логин Савелий, переход на вкладку друзья, подписчики");
+
         List<RecommendedSubscriptionIconWrapper> listRecommendedSubscription = friendsPage.getRecommendedPeoples();
-        RecommendedSubscriptionIconWrapper people = listRecommendedSubscription.get(1);
-        String name = people.getName();
+        RecommendedSubscriptionIconWrapper subsctiption = listRecommendedSubscription.get(0);
+        subscriptionName = subsctiption.getName();
+        test.log(Status.DEBUG, "Собираемся подписаться на " + subscriptionName);
 
-        List<MySubscriptionWrapper> listMySubscription1 = friendsPage.getMySubscriptionWrappers();
-        long numberPeople = listMySubscription1.stream().filter(s -> s.getName().equals(name)).count();
+        List<MySubscriptionWrapper> listMySubscription = friendsPage.getMySubscriptionWrappers();
+        long countSubscriptionsBefore = listMySubscription.stream().filter(s -> s.getName().equals(subscriptionName)).count();
 
-        people.SubscribeToPerson();
+        subsctiption.SubscribeToPerson();
+        test.log(Status.DEBUG, "Подписались на " + subscriptionName);
 
         driver.navigate().refresh();
 
-        List<MySubscriptionWrapper> listMySubscription2 = friendsPage.getMySubscriptionWrappers();
-        long numberPeople2 = listMySubscription2.stream().filter(s -> s.getName().equals(name)).count();
+        listMySubscription = friendsPage.getMySubscriptionWrappers();
+        long countSubscriptionsAfter = listMySubscription.stream().filter(s -> s.getName().equals(subscriptionName)).count();
 
-        Assert.assertTrue(numberPeople2-numberPeople == 1, "Дичь");
-        List<MySubscriptionWrapper> listMySubscription3 = friendsPage.getMySubscriptionWrappers();
-        listMySubscription3.stream().filter(x -> x.getName().equals(name)).forEach(MySubscriptionWrapper::unsubscribe);
+        Assert.assertTrue(countSubscriptionsAfter - countSubscriptionsBefore == 1, "Разница между " +
+                "колчеством подписчиков с именем " + subscriptionName + " до и после не равна 1.");
     }
 
     @AfterClass
     public void after() throws InterruptedException {
+        List<MySubscriptionWrapper> listMySubscription = friendsPage.getMySubscriptionWrappers();
+        listMySubscription.stream().filter(x -> x.getName().equals(subscriptionName)).
+                forEach(MySubscriptionWrapper::unsubscribe);
+        test.log(Status.DEBUG, "Отписались от " + subscriptionName);
         driver.quit();
         test.log(Status.DEBUG, "After метод успешно отработал");
     }
