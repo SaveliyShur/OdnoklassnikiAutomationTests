@@ -30,7 +30,7 @@ public class TestAddClosePagePeople extends BaseTest {
         addFriend(botWishClosePage, botWhoAddNewFriend)
                 .getToolbar()
                 .exit();
-        test.log(Status.DEBUG, "Проверили, что страница bot9 закрыта, отправили запрос в друзья");
+        test.log(Status.DEBUG, "Проверили, что страница закрыта, отправили запрос в друзья");
 
         LoginPage loginPage2 = getLoginPage();
         loginPage2.doLogin(botWhoAddNewFriend);
