@@ -10,13 +10,13 @@ import pages.FriendsPage;
 import pages.LoginPage;
 import pages.wrappers.MySubscriptionWrapper;
 import pages.wrappers.RecommendedSubscriptionIconWrapper;
-import tests.BaseTests;
+import tests.BaseTest;
 
 import java.util.List;
 
 import static java.lang.Thread.sleep;
 
-public class TestRecommendedSubscriptions extends BaseTests {
+public class TestRecommendedSubscriptions extends BaseTest {
     Bot botOleg = new SaveliyBot();
 
     @Test

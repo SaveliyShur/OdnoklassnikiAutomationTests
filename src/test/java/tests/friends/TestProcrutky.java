@@ -12,7 +12,7 @@ import org.testng.annotations.Test;
 import pages.FriendsPage;
 import pages.LoginPage;
 import pages.wrappers.RecommendedSubscriptionIconWrapper;
-import tests.BaseTests;
+import tests.BaseTest;
 
 import java.util.List;
 
@@ -25,7 +25,7 @@ import static java.lang.Thread.sleep;
 Прокручиваем страницу вниз
 Ждем появятся ли еще рекомендованные подписки и проверяем это
  */
-public class TestProcrutky extends BaseTests {
+public class TestProcrutky extends BaseTest {
     Bot botOleg = new OlegBot();
 
     @Test
