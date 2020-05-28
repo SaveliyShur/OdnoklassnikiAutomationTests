@@ -58,6 +58,11 @@ public class PeoplePage extends BasePage  implements PeoplePageInterface{
     }
 
     @Override
+    public boolean isOpen() {
+        return true;
+    }
+
+    @Override
     void check(WebDriver driver) {
         assertLocator(driver,  FRIENDS_MENU);
     }

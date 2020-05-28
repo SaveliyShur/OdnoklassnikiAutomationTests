@@ -47,7 +47,7 @@
 		<ul id='nav-mobile' class='right hide-on-med-and-down nav-right'>
 			<li>
                 <a href='#!'>
-                    <span class='label suite-start-time blue darken-3'>May 28, 2020 03:50:48 PM</span>
+                    <span class='label suite-start-time blue darken-3'>May 28, 2020 04:27:48 PM</span>
 				</a>
 			</li>
 			<li>
@@ -160,14 +160,14 @@
 				<li class='test displayed active  fail' status='fail' bdd='false' test-id='1'>
 					<div class='test-heading'>
 						<span class='test-name'>TestAddClosePagePeople</span>
-						<span class='test-time'>May 28, 2020 03:50:52 PM</span>
+						<span class='test-time'>May 28, 2020 04:27:52 PM</span>
 						<span class='test-status right fail'>fail</span>
 					</div>
 					<div class='test-content hide'>
 <div class='test-time-info'>
-	<span class='label start-time'>May 28, 2020 03:50:52 PM</span>
-	<span class='label end-time'>May 28, 2020 03:51:24 PM</span>
-	<span class='label time-taken grey lighten-1 white-text'>0h 0m 32s+51ms</span>
+	<span class='label start-time'>May 28, 2020 04:27:52 PM</span>
+	<span class='label end-time'>May 28, 2020 04:28:25 PM</span>
+	<span class='label time-taken grey lighten-1 white-text'>0h 0m 32s+618ms</span>
 </div>
 	<div class='test-steps'>
 		<table class='bordered table-results'>
@@ -179,25 +179,30 @@
 				</tr>
 			</thead>
 			<tbody>
+				<tr class='log' status='debug'>
+					<td class='status debug' title='debug' alt='debug'><i class='material-icons'>low_priority</i></td>
+					<td class='timestamp'>4:28:04 PM</td>
+					<td class='step-details'>Логин Савелий, переход на страницу bot9</td>
+				</tr>
 				<tr class='log' status='fail'>
 					<td class='status fail' title='fail' alt='fail'><i class='material-icons'>cancel</i></td>
-					<td class='timestamp'>3:51:15 PM</td>
+					<td class='timestamp'>4:28:18 PM</td>
 					<td class='step-details'><span class='label white-text red'>testAddClosePagePeoplefailed</span></td>
 				</tr>
 				<tr class='log' status='debug'>
 					<td class='status debug' title='debug' alt='debug'><i class='material-icons'>low_priority</i></td>
-					<td class='timestamp'>3:51:16 PM</td>
+					<td class='timestamp'>4:28:18 PM</td>
 					<td class='step-details'>Скриншот: testAddClosePagePeople.png</td>
 				</tr>
 				<tr class='log' status='fail'>
 					<td class='status fail' title='fail' alt='fail'><i class='material-icons'>cancel</i></td>
-					<td class='timestamp'>3:51:16 PM</td>
-					<td class='step-details'><textarea>org.openqa.selenium.TimeoutException: Expected condition failed: waiting for pages.BasePage$$Lambda$304/0x0000000800d48040@231fbd13 (tried for 10 second(s) with 500 MILLISECONDS interval)
+					<td class='timestamp'>4:28:18 PM</td>
+					<td class='step-details'><textarea>org.openqa.selenium.TimeoutException: Expected condition failed: waiting for pages.BasePage$$Lambda$304/0x0000000800d48440@5df1e1dd (tried for 10 second(s) with 500 MILLISECONDS interval)
 Build info: version: '3.4.0', revision: 'unknown', time: 'unknown'
 System info: host: 'DESKTOP-E910U53', ip: '192.168.1.25', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '14.0.1'
 Driver info: org.openqa.selenium.chrome.ChromeDriver
-Capabilities [{networkConnectionEnabled=false, chrome={chromedriverVersion=83.0.4103.39 (ccbf011cb2d2b19b506d844400483861342c20cd-refs/branch-heads/4103@{#416}), userDataDir=C:\Users\Grabar\AppData\Local\Temp\scoped_dir6512_1930039606}, timeouts={implicit=0.0, pageLoad=300000.0, script=30000.0}, pageLoadStrategy=normal, unhandledPromptBehavior=dismiss and notify, strictFileInteractability=false, platform=ANY, proxy=Proxy(), goog:chromeOptions={debuggerAddress=localhost:59306}, acceptInsecureCerts=false, browserVersion=83.0.4103.61, browserName=chrome, javascriptEnabled=true, platformName=windows, setWindowRect=true, webauthn:virtualAuthenticators=true}]
-Session ID: 81d137049241c4bab9f6c90f8293076a
+Capabilities [{networkConnectionEnabled=false, chrome={chromedriverVersion=83.0.4103.39 (ccbf011cb2d2b19b506d844400483861342c20cd-refs/branch-heads/4103@{#416}), userDataDir=C:\Users\Grabar\AppData\Local\Temp\scoped_dir5572_668030648}, timeouts={implicit=0.0, pageLoad=300000.0, script=30000.0}, pageLoadStrategy=normal, unhandledPromptBehavior=dismiss and notify, strictFileInteractability=false, platform=ANY, proxy=Proxy(), goog:chromeOptions={debuggerAddress=localhost:61096}, acceptInsecureCerts=false, browserVersion=83.0.4103.61, browserName=chrome, javascriptEnabled=true, platformName=windows, setWindowRect=true, webauthn:virtualAuthenticators=true}]
+Session ID: 0c73d1a25c7d356f669f145e36edf6ad
 	at org.openqa.selenium.support.ui.WebDriverWait.timeoutException(WebDriverWait.java:80)
 	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:232)
 	at pages.BasePage.assertLocator(BasePage.java:68)
@@ -205,8 +210,8 @@ Session ID: 81d137049241c4bab9f6c90f8293076a
 	at pages.BasePage.<init>(BasePage.java:20)
 	at pages.HomePage.<init>(HomePage.java:15)
 	at pages.LoginPage.doLogin(LoginPage.java:31)
-	at tests.friends.TestAddClosePagePeople.addFriend(TestAddClosePagePeople.java:64)
-	at tests.friends.TestAddClosePagePeople.testAddClosePagePeople(TestAddClosePagePeople.java:29)
+	at tests.friends.TestAddClosePagePeople.addFriend(TestAddClosePagePeople.java:68)
+	at tests.friends.TestAddClosePagePeople.testAddClosePagePeople(TestAddClosePagePeople.java:30)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -234,22 +239,22 @@ Session ID: 81d137049241c4bab9f6c90f8293076a
 				</tr>
 				<tr class='log' status='debug'>
 					<td class='status debug' title='debug' alt='debug'><i class='material-icons'>low_priority</i></td>
-					<td class='timestamp'>3:51:21 PM</td>
-					<td class='step-details'>Логин bot1</td>
+					<td class='timestamp'>4:28:22 PM</td>
+					<td class='step-details'>Логин Савелий</td>
 				</tr>
 				<tr class='log' status='debug'>
 					<td class='status debug' title='debug' alt='debug'><i class='material-icons'>low_priority</i></td>
-					<td class='timestamp'>3:51:22 PM</td>
-					<td class='step-details'>Переход на страницу bot2</td>
+					<td class='timestamp'>4:28:23 PM</td>
+					<td class='step-details'>Переход на страницу bot9</td>
 				</tr>
 				<tr class='log' status='debug'>
 					<td class='status debug' title='debug' alt='debug'><i class='material-icons'>low_priority</i></td>
-					<td class='timestamp'>3:51:23 PM</td>
-					<td class='step-details'>Удаление запроса в друзья от bot2</td>
+					<td class='timestamp'>4:28:23 PM</td>
+					<td class='step-details'>Удаление запроса в друзья от bot9</td>
 				</tr>
 				<tr class='log' status='debug'>
 					<td class='status debug' title='debug' alt='debug'><i class='material-icons'>low_priority</i></td>
-					<td class='timestamp'>3:51:24 PM</td>
+					<td class='timestamp'>4:28:25 PM</td>
 					<td class='step-details'>After метод успешно отработал.</td>
 				</tr>
 			</tbody>
@@ -262,14 +267,14 @@ Session ID: 81d137049241c4bab9f6c90f8293076a
 				<li class='test displayed active  pass' status='pass' bdd='false' test-id='2'>
 					<div class='test-heading'>
 						<span class='test-name'>TestFriendsSearch</span>
-						<span class='test-time'>May 28, 2020 03:50:52 PM</span>
+						<span class='test-time'>May 28, 2020 04:27:52 PM</span>
 						<span class='test-status right pass'>pass</span>
 					</div>
 					<div class='test-content hide'>
 <div class='test-time-info'>
-	<span class='label start-time'>May 28, 2020 03:50:52 PM</span>
-	<span class='label end-time'>May 28, 2020 03:52:54 PM</span>
-	<span class='label time-taken grey lighten-1 white-text'>0h 2m 2s+169ms</span>
+	<span class='label start-time'>May 28, 2020 04:27:52 PM</span>
+	<span class='label end-time'>May 28, 2020 04:29:55 PM</span>
+	<span class='label time-taken grey lighten-1 white-text'>0h 2m 3s+235ms</span>
 </div>
 	<div class='test-steps'>
 		<table class='bordered table-results'>
@@ -283,22 +288,22 @@ Session ID: 81d137049241c4bab9f6c90f8293076a
 			<tbody>
 				<tr class='log' status='debug'>
 					<td class='status debug' title='debug' alt='debug'><i class='material-icons'>low_priority</i></td>
-					<td class='timestamp'>3:51:00 PM</td>
+					<td class='timestamp'>4:28:03 PM</td>
 					<td class='step-details'>Перешли на страницу друзей Савелия</td>
 				</tr>
 				<tr class='log' status='debug'>
 					<td class='status debug' title='debug' alt='debug'><i class='material-icons'>low_priority</i></td>
-					<td class='timestamp'>3:51:00 PM</td>
+					<td class='timestamp'>4:28:03 PM</td>
 					<td class='step-details'>Получили список его друзей</td>
 				</tr>
 				<tr class='log' status='pass'>
 					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
-					<td class='timestamp'>3:52:53 PM</td>
+					<td class='timestamp'>4:29:54 PM</td>
 					<td class='step-details'><span class='label white-text green'>testFriendsSearchpassed</span></td>
 				</tr>
 				<tr class='log' status='debug'>
 					<td class='status debug' title='debug' alt='debug'><i class='material-icons'>low_priority</i></td>
-					<td class='timestamp'>3:52:54 PM</td>
+					<td class='timestamp'>4:29:55 PM</td>
 					<td class='step-details'>After метод успешно отработал</td>
 				</tr>
 			</tbody>
@@ -311,14 +316,14 @@ Session ID: 81d137049241c4bab9f6c90f8293076a
 				<li class='test displayed active  pass' status='pass' bdd='false' test-id='3'>
 					<div class='test-heading'>
 						<span class='test-name'>TestRecommendedSubscriptions</span>
-						<span class='test-time'>May 28, 2020 03:51:27 PM</span>
+						<span class='test-time'>May 28, 2020 04:28:28 PM</span>
 						<span class='test-status right pass'>pass</span>
 					</div>
 					<div class='test-content hide'>
 <div class='test-time-info'>
-	<span class='label start-time'>May 28, 2020 03:51:27 PM</span>
-	<span class='label end-time'>May 28, 2020 03:51:41 PM</span>
-	<span class='label time-taken grey lighten-1 white-text'>0h 0m 14s+38ms</span>
+	<span class='label start-time'>May 28, 2020 04:28:28 PM</span>
+	<span class='label end-time'>May 28, 2020 04:28:38 PM</span>
+	<span class='label time-taken grey lighten-1 white-text'>0h 0m 10s+122ms</span>
 </div>
 	<div class='test-steps'>
 		<table class='bordered table-results'>
@@ -332,32 +337,32 @@ Session ID: 81d137049241c4bab9f6c90f8293076a
 			<tbody>
 				<tr class='log' status='debug'>
 					<td class='status debug' title='debug' alt='debug'><i class='material-icons'>low_priority</i></td>
-					<td class='timestamp'>3:51:37 PM</td>
+					<td class='timestamp'>4:28:34 PM</td>
 					<td class='step-details'>Логин Савелий, переход на вкладку друзья, подписчики</td>
 				</tr>
 				<tr class='log' status='debug'>
 					<td class='status debug' title='debug' alt='debug'><i class='material-icons'>low_priority</i></td>
-					<td class='timestamp'>3:51:37 PM</td>
+					<td class='timestamp'>4:28:34 PM</td>
 					<td class='step-details'>Собираемся подписаться на LUXOR</td>
 				</tr>
 				<tr class='log' status='debug'>
 					<td class='status debug' title='debug' alt='debug'><i class='material-icons'>low_priority</i></td>
-					<td class='timestamp'>3:51:38 PM</td>
+					<td class='timestamp'>4:28:35 PM</td>
 					<td class='step-details'>Подписались на LUXOR</td>
 				</tr>
 				<tr class='log' status='pass'>
 					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
-					<td class='timestamp'>3:51:39 PM</td>
+					<td class='timestamp'>4:28:36 PM</td>
 					<td class='step-details'><span class='label white-text green'>testRecommendedSubscriptionspassed</span></td>
 				</tr>
 				<tr class='log' status='debug'>
 					<td class='status debug' title='debug' alt='debug'><i class='material-icons'>low_priority</i></td>
-					<td class='timestamp'>3:51:40 PM</td>
+					<td class='timestamp'>4:28:37 PM</td>
 					<td class='step-details'>Отписались от LUXOR</td>
 				</tr>
 				<tr class='log' status='debug'>
 					<td class='status debug' title='debug' alt='debug'><i class='material-icons'>low_priority</i></td>
-					<td class='timestamp'>3:51:41 PM</td>
+					<td class='timestamp'>4:28:38 PM</td>
 					<td class='step-details'>After метод успешно отработал</td>
 				</tr>
 			</tbody>
@@ -370,14 +375,14 @@ Session ID: 81d137049241c4bab9f6c90f8293076a
 				<li class='test displayed active  pass' status='pass' bdd='false' test-id='4'>
 					<div class='test-heading'>
 						<span class='test-name'>TestAddFriendRequest</span>
-						<span class='test-time'>May 28, 2020 03:51:45 PM</span>
+						<span class='test-time'>May 28, 2020 04:28:41 PM</span>
 						<span class='test-status right pass'>pass</span>
 					</div>
 					<div class='test-content hide'>
 <div class='test-time-info'>
-	<span class='label start-time'>May 28, 2020 03:51:45 PM</span>
-	<span class='label end-time'>May 28, 2020 03:52:07 PM</span>
-	<span class='label time-taken grey lighten-1 white-text'>0h 0m 22s+615ms</span>
+	<span class='label start-time'>May 28, 2020 04:28:41 PM</span>
+	<span class='label end-time'>May 28, 2020 04:28:58 PM</span>
+	<span class='label time-taken grey lighten-1 white-text'>0h 0m 17s+37ms</span>
 </div>
 	<div class='test-steps'>
 		<table class='bordered table-results'>
@@ -391,42 +396,42 @@ Session ID: 81d137049241c4bab9f6c90f8293076a
 			<tbody>
 				<tr class='log' status='debug'>
 					<td class='status debug' title='debug' alt='debug'><i class='material-icons'>low_priority</i></td>
-					<td class='timestamp'>3:51:51 PM</td>
+					<td class='timestamp'>4:28:44 PM</td>
 					<td class='step-details'>Логин bot1</td>
 				</tr>
 				<tr class='log' status='debug'>
 					<td class='status debug' title='debug' alt='debug'><i class='material-icons'>low_priority</i></td>
-					<td class='timestamp'>3:51:52 PM</td>
+					<td class='timestamp'>4:28:45 PM</td>
 					<td class='step-details'>Переход на страницу bot2</td>
 				</tr>
 				<tr class='log' status='debug'>
 					<td class='status debug' title='debug' alt='debug'><i class='material-icons'>low_priority</i></td>
-					<td class='timestamp'>3:51:53 PM</td>
+					<td class='timestamp'>4:28:45 PM</td>
 					<td class='step-details'>Отправление запроса в друзья от bot1 к bot2</td>
 				</tr>
 				<tr class='log' status='pass'>
 					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
-					<td class='timestamp'>3:52:03 PM</td>
+					<td class='timestamp'>4:28:54 PM</td>
 					<td class='step-details'><span class='label white-text green'>testAddFriendpassed</span></td>
 				</tr>
 				<tr class='log' status='debug'>
 					<td class='status debug' title='debug' alt='debug'><i class='material-icons'>low_priority</i></td>
-					<td class='timestamp'>3:52:05 PM</td>
+					<td class='timestamp'>4:28:57 PM</td>
 					<td class='step-details'>Логин bot1</td>
 				</tr>
 				<tr class='log' status='debug'>
 					<td class='status debug' title='debug' alt='debug'><i class='material-icons'>low_priority</i></td>
-					<td class='timestamp'>3:52:06 PM</td>
+					<td class='timestamp'>4:28:57 PM</td>
 					<td class='step-details'>Переход на страницу bot2</td>
 				</tr>
 				<tr class='log' status='debug'>
 					<td class='status debug' title='debug' alt='debug'><i class='material-icons'>low_priority</i></td>
-					<td class='timestamp'>3:52:06 PM</td>
+					<td class='timestamp'>4:28:57 PM</td>
 					<td class='step-details'>Удаление запроса на добавление в друзья</td>
 				</tr>
 				<tr class='log' status='debug'>
 					<td class='status debug' title='debug' alt='debug'><i class='material-icons'>low_priority</i></td>
-					<td class='timestamp'>3:52:07 PM</td>
+					<td class='timestamp'>4:28:58 PM</td>
 					<td class='step-details'>After метод успешно отработал</td>
 				</tr>
 			</tbody>
@@ -439,14 +444,14 @@ Session ID: 81d137049241c4bab9f6c90f8293076a
 				<li class='test displayed active  pass' status='pass' bdd='false' test-id='5'>
 					<div class='test-heading'>
 						<span class='test-name'>TestAddFriends</span>
-						<span class='test-time'>May 28, 2020 03:52:10 PM</span>
+						<span class='test-time'>May 28, 2020 04:29:02 PM</span>
 						<span class='test-status right pass'>pass</span>
 					</div>
 					<div class='test-content hide'>
 <div class='test-time-info'>
-	<span class='label start-time'>May 28, 2020 03:52:10 PM</span>
-	<span class='label end-time'>May 28, 2020 03:52:48 PM</span>
-	<span class='label time-taken grey lighten-1 white-text'>0h 0m 37s+653ms</span>
+	<span class='label start-time'>May 28, 2020 04:29:02 PM</span>
+	<span class='label end-time'>May 28, 2020 04:29:33 PM</span>
+	<span class='label time-taken grey lighten-1 white-text'>0h 0m 31s+168ms</span>
 </div>
 	<div class='test-steps'>
 		<table class='bordered table-results'>
@@ -460,62 +465,62 @@ Session ID: 81d137049241c4bab9f6c90f8293076a
 			<tbody>
 				<tr class='log' status='debug'>
 					<td class='status debug' title='debug' alt='debug'><i class='material-icons'>low_priority</i></td>
-					<td class='timestamp'>3:52:16 PM</td>
+					<td class='timestamp'>4:29:06 PM</td>
 					<td class='step-details'>Логин bot1</td>
 				</tr>
 				<tr class='log' status='debug'>
 					<td class='status debug' title='debug' alt='debug'><i class='material-icons'>low_priority</i></td>
-					<td class='timestamp'>3:52:17 PM</td>
+					<td class='timestamp'>4:29:06 PM</td>
 					<td class='step-details'>Переход на страницу bot2</td>
 				</tr>
 				<tr class='log' status='debug'>
 					<td class='status debug' title='debug' alt='debug'><i class='material-icons'>low_priority</i></td>
-					<td class='timestamp'>3:52:19 PM</td>
+					<td class='timestamp'>4:29:08 PM</td>
 					<td class='step-details'>Логаут bot1</td>
 				</tr>
 				<tr class='log' status='debug'>
 					<td class='status debug' title='debug' alt='debug'><i class='material-icons'>low_priority</i></td>
-					<td class='timestamp'>3:52:21 PM</td>
+					<td class='timestamp'>4:29:10 PM</td>
 					<td class='step-details'>Логин bot2 и переход во вкладку ДРУЗЬЯ</td>
 				</tr>
 				<tr class='log' status='debug'>
 					<td class='status debug' title='debug' alt='debug'><i class='material-icons'>low_priority</i></td>
-					<td class='timestamp'>3:52:23 PM</td>
+					<td class='timestamp'>4:29:12 PM</td>
 					<td class='step-details'>Подтверждение запроса в друзья от bot1 к bot2</td>
 				</tr>
 				<tr class='log' status='debug'>
 					<td class='status debug' title='debug' alt='debug'><i class='material-icons'>low_priority</i></td>
-					<td class='timestamp'>3:52:26 PM</td>
+					<td class='timestamp'>4:29:14 PM</td>
 					<td class='step-details'>Логаут bot2. Уже устал писать слишком подробные логи</td>
 				</tr>
 				<tr class='log' status='debug'>
 					<td class='status debug' title='debug' alt='debug'><i class='material-icons'>low_priority</i></td>
-					<td class='timestamp'>3:52:28 PM</td>
+					<td class='timestamp'>4:29:16 PM</td>
 					<td class='step-details'>Логин bot1. Проверка наличия в друзьях bot2</td>
 				</tr>
 				<tr class='log' status='pass'>
 					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
-					<td class='timestamp'>3:52:28 PM</td>
+					<td class='timestamp'>4:29:16 PM</td>
 					<td class='step-details'><span class='label white-text green'>testAddFriendpassed</span></td>
 				</tr>
 				<tr class='log' status='debug'>
 					<td class='status debug' title='debug' alt='debug'><i class='material-icons'>low_priority</i></td>
-					<td class='timestamp'>3:52:34 PM</td>
+					<td class='timestamp'>4:29:20 PM</td>
 					<td class='step-details'>Логин bot1</td>
 				</tr>
 				<tr class='log' status='debug'>
 					<td class='status debug' title='debug' alt='debug'><i class='material-icons'>low_priority</i></td>
-					<td class='timestamp'>3:52:35 PM</td>
+					<td class='timestamp'>4:29:21 PM</td>
 					<td class='step-details'>Переход на страницу bot2</td>
 				</tr>
 				<tr class='log' status='debug'>
 					<td class='status debug' title='debug' alt='debug'><i class='material-icons'>low_priority</i></td>
-					<td class='timestamp'>3:52:47 PM</td>
+					<td class='timestamp'>4:29:32 PM</td>
 					<td class='step-details'>Удаление bot2 из друзей</td>
 				</tr>
 				<tr class='log' status='debug'>
 					<td class='status debug' title='debug' alt='debug'><i class='material-icons'>low_priority</i></td>
-					<td class='timestamp'>3:52:48 PM</td>
+					<td class='timestamp'>4:29:33 PM</td>
 					<td class='step-details'>After метод успешно отработал.</td>
 				</tr>
 			</tbody>
@@ -528,14 +533,14 @@ Session ID: 81d137049241c4bab9f6c90f8293076a
 				<li class='test displayed active  fail' status='fail' bdd='false' test-id='6'>
 					<div class='test-heading'>
 						<span class='test-name'>TestFailed</span>
-						<span class='test-time'>May 28, 2020 03:52:57 PM</span>
+						<span class='test-time'>May 28, 2020 04:29:59 PM</span>
 						<span class='test-status right fail'>fail</span>
 					</div>
 					<div class='test-content hide'>
 <div class='test-time-info'>
-	<span class='label start-time'>May 28, 2020 03:52:57 PM</span>
-	<span class='label end-time'>May 28, 2020 03:53:03 PM</span>
-	<span class='label time-taken grey lighten-1 white-text'>0h 0m 5s+582ms</span>
+	<span class='label start-time'>May 28, 2020 04:29:59 PM</span>
+	<span class='label end-time'>May 28, 2020 04:30:04 PM</span>
+	<span class='label time-taken grey lighten-1 white-text'>0h 0m 5s+319ms</span>
 </div>
 	<div class='test-steps'>
 		<table class='bordered table-results'>
@@ -549,22 +554,22 @@ Session ID: 81d137049241c4bab9f6c90f8293076a
 			<tbody>
 				<tr class='log' status='debug'>
 					<td class='status debug' title='debug' alt='debug'><i class='material-icons'>low_priority</i></td>
-					<td class='timestamp'>3:53:01 PM</td>
+					<td class='timestamp'>4:30:03 PM</td>
 					<td class='step-details'>Логин bot1</td>
 				</tr>
 				<tr class='log' status='fail'>
 					<td class='status fail' title='fail' alt='fail'><i class='material-icons'>cancel</i></td>
-					<td class='timestamp'>3:53:01 PM</td>
+					<td class='timestamp'>4:30:03 PM</td>
 					<td class='step-details'><span class='label white-text red'>failedTestfailed</span></td>
 				</tr>
 				<tr class='log' status='debug'>
 					<td class='status debug' title='debug' alt='debug'><i class='material-icons'>low_priority</i></td>
-					<td class='timestamp'>3:53:02 PM</td>
+					<td class='timestamp'>4:30:03 PM</td>
 					<td class='step-details'>Скриншот: failedTest.png</td>
 				</tr>
 				<tr class='log' status='fail'>
 					<td class='status fail' title='fail' alt='fail'><i class='material-icons'>cancel</i></td>
-					<td class='timestamp'>3:53:02 PM</td>
+					<td class='timestamp'>4:30:03 PM</td>
 					<td class='step-details'><pre>java.lang.AssertionError: Упс) expected [true] but found [false]
 	at org.testng.Assert.fail(Assert.java:97)
 	at org.testng.Assert.failNotEquals(Assert.java:969)
@@ -597,7 +602,7 @@ Session ID: 81d137049241c4bab9f6c90f8293076a
 				</tr>
 				<tr class='log' status='debug'>
 					<td class='status debug' title='debug' alt='debug'><i class='material-icons'>low_priority</i></td>
-					<td class='timestamp'>3:53:03 PM</td>
+					<td class='timestamp'>4:30:04 PM</td>
 					<td class='step-details'>After метод успешно отработал.</td>
 				</tr>
 			</tbody>
@@ -610,14 +615,14 @@ Session ID: 81d137049241c4bab9f6c90f8293076a
 				<li class='test displayed active  pass' status='pass' bdd='false' test-id='7'>
 					<div class='test-heading'>
 						<span class='test-name'>TestScrolling</span>
-						<span class='test-time'>May 28, 2020 03:53:06 PM</span>
+						<span class='test-time'>May 28, 2020 04:30:07 PM</span>
 						<span class='test-status right pass'>pass</span>
 					</div>
 					<div class='test-content hide'>
 <div class='test-time-info'>
-	<span class='label start-time'>May 28, 2020 03:53:06 PM</span>
-	<span class='label end-time'>May 28, 2020 03:53:16 PM</span>
-	<span class='label time-taken grey lighten-1 white-text'>0h 0m 9s+569ms</span>
+	<span class='label start-time'>May 28, 2020 04:30:07 PM</span>
+	<span class='label end-time'>May 28, 2020 04:30:15 PM</span>
+	<span class='label time-taken grey lighten-1 white-text'>0h 0m 7s+993ms</span>
 </div>
 	<div class='test-steps'>
 		<table class='bordered table-results'>
@@ -631,27 +636,27 @@ Session ID: 81d137049241c4bab9f6c90f8293076a
 			<tbody>
 				<tr class='log' status='debug'>
 					<td class='status debug' title='debug' alt='debug'><i class='material-icons'>low_priority</i></td>
-					<td class='timestamp'>3:53:14 PM</td>
+					<td class='timestamp'>4:30:14 PM</td>
 					<td class='step-details'>Залогинились на страницу Олега, перешли во вкладку Подписчики</td>
 				</tr>
 				<tr class='log' status='debug'>
 					<td class='status debug' title='debug' alt='debug'><i class='material-icons'>low_priority</i></td>
-					<td class='timestamp'>3:53:14 PM</td>
+					<td class='timestamp'>4:30:14 PM</td>
 					<td class='step-details'>Скроллим</td>
 				</tr>
 				<tr class='log' status='debug'>
 					<td class='status debug' title='debug' alt='debug'><i class='material-icons'>low_priority</i></td>
-					<td class='timestamp'>3:53:15 PM</td>
+					<td class='timestamp'>4:30:14 PM</td>
 					<td class='step-details'>При скроле появляются новые рекомендации по подпискам</td>
 				</tr>
 				<tr class='log' status='pass'>
 					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
-					<td class='timestamp'>3:53:15 PM</td>
+					<td class='timestamp'>4:30:14 PM</td>
 					<td class='step-details'><span class='label white-text green'>testScrolpassed</span></td>
 				</tr>
 				<tr class='log' status='debug'>
 					<td class='status debug' title='debug' alt='debug'><i class='material-icons'>low_priority</i></td>
-					<td class='timestamp'>3:53:16 PM</td>
+					<td class='timestamp'>4:30:15 PM</td>
 					<td class='step-details'>After метод успешно отработал</td>
 				</tr>
 			</tbody>
@@ -727,14 +732,14 @@ Session ID: 81d137049241c4bab9f6c90f8293076a
                                         </thead>
                                         <tbody>
                                                     <tr>
-                                                        <td>May 28, 2020 03:50:52 PM</td>
+                                                        <td>May 28, 2020 04:27:52 PM</td>
                                                         <td class='linked' test-id='1'>TestAddClosePagePeople</td>
-                                                        <td><pre><textarea>org.openqa.selenium.TimeoutException: Expected condition failed: waiting for pages.BasePage$$Lambda$304/0x0000000800d48040@231fbd13 (tried for 10 second(s) with 500 MILLISECONDS interval)
+                                                        <td><pre><textarea>org.openqa.selenium.TimeoutException: Expected condition failed: waiting for pages.BasePage$$Lambda$304/0x0000000800d48440@5df1e1dd (tried for 10 second(s) with 500 MILLISECONDS interval)
 Build info: version: '3.4.0', revision: 'unknown', time: 'unknown'
 System info: host: 'DESKTOP-E910U53', ip: '192.168.1.25', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '14.0.1'
 Driver info: org.openqa.selenium.chrome.ChromeDriver
-Capabilities [{networkConnectionEnabled=false, chrome={chromedriverVersion=83.0.4103.39 (ccbf011cb2d2b19b506d844400483861342c20cd-refs/branch-heads/4103@{#416}), userDataDir=C:\Users\Grabar\AppData\Local\Temp\scoped_dir6512_1930039606}, timeouts={implicit=0.0, pageLoad=300000.0, script=30000.0}, pageLoadStrategy=normal, unhandledPromptBehavior=dismiss and notify, strictFileInteractability=false, platform=ANY, proxy=Proxy(), goog:chromeOptions={debuggerAddress=localhost:59306}, acceptInsecureCerts=false, browserVersion=83.0.4103.61, browserName=chrome, javascriptEnabled=true, platformName=windows, setWindowRect=true, webauthn:virtualAuthenticators=true}]
-Session ID: 81d137049241c4bab9f6c90f8293076a
+Capabilities [{networkConnectionEnabled=false, chrome={chromedriverVersion=83.0.4103.39 (ccbf011cb2d2b19b506d844400483861342c20cd-refs/branch-heads/4103@{#416}), userDataDir=C:\Users\Grabar\AppData\Local\Temp\scoped_dir5572_668030648}, timeouts={implicit=0.0, pageLoad=300000.0, script=30000.0}, pageLoadStrategy=normal, unhandledPromptBehavior=dismiss and notify, strictFileInteractability=false, platform=ANY, proxy=Proxy(), goog:chromeOptions={debuggerAddress=localhost:61096}, acceptInsecureCerts=false, browserVersion=83.0.4103.61, browserName=chrome, javascriptEnabled=true, platformName=windows, setWindowRect=true, webauthn:virtualAuthenticators=true}]
+Session ID: 0c73d1a25c7d356f669f145e36edf6ad
 	at org.openqa.selenium.support.ui.WebDriverWait.timeoutException(WebDriverWait.java:80)
 	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:232)
 	at pages.BasePage.assertLocator(BasePage.java:68)
@@ -742,8 +747,8 @@ Session ID: 81d137049241c4bab9f6c90f8293076a
 	at pages.BasePage.<init>(BasePage.java:20)
 	at pages.HomePage.<init>(HomePage.java:15)
 	at pages.LoginPage.doLogin(LoginPage.java:31)
-	at tests.friends.TestAddClosePagePeople.addFriend(TestAddClosePagePeople.java:64)
-	at tests.friends.TestAddClosePagePeople.testAddClosePagePeople(TestAddClosePagePeople.java:29)
+	at tests.friends.TestAddClosePagePeople.addFriend(TestAddClosePagePeople.java:68)
+	at tests.friends.TestAddClosePagePeople.testAddClosePagePeople(TestAddClosePagePeople.java:30)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -791,7 +796,7 @@ Session ID: 81d137049241c4bab9f6c90f8293076a
                                         </thead>
                                         <tbody>
                                                     <tr>
-                                                        <td>May 28, 2020 03:52:57 PM</td>
+                                                        <td>May 28, 2020 04:29:59 PM</td>
                                                         <td class='linked' test-id='6'>TestFailed</td>
                                                         <td><pre><pre>java.lang.AssertionError: Упс) expected [true] but found [false]
 	at org.testng.Assert.fail(Assert.java:97)
@@ -859,19 +864,19 @@ Session ID: 81d137049241c4bab9f6c90f8293076a
 			<div class='col s2'>
 				<div class='card-panel r'>
 					Start
-					<div class='panel-lead'>May 28, 2020 03:50:48 PM</div>
+					<div class='panel-lead'>May 28, 2020 04:27:48 PM</div>
 				</div>
 			</div>
 			<div class='col s2'>
 				<div class='card-panel r'>
 			 		End
-			 		<div class='panel-lead'>May 28, 2020 03:53:16 PM</div>
+			 		<div class='panel-lead'>May 28, 2020 04:30:15 PM</div>
 				</div>
 			</div>
 			<div class='col s2'>
 				<div class='card-panel r'>
 					Time Taken
-					<div class='panel-lead'>0h 2m 28s+80ms</div>
+					<div class='panel-lead'>0h 2m 27s+185ms</div>
 				</div>
 			</div>
 		</div>
@@ -899,7 +904,7 @@ Session ID: 81d137049241c4bab9f6c90f8293076a
 				warningChild: 0,
 				skipChild: 0,
 				infoChild: 0,
-				exceptionsChild: 42,
+				exceptionsChild: 43,
 				
 				passGrandChild: 0,
 				failGrandChild: 0,

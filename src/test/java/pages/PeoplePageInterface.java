@@ -12,5 +12,7 @@ public interface PeoplePageInterface {
 
     ToolBar getToolbar();
 
+    boolean isOpen();
+
 
 }
