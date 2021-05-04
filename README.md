@@ -1,5 +1,4 @@
-# texnopolis1
- Repository for teamwork in technopolis.
+#OdnoklassnikiAutomationsTests with Selenium 
 Выпускной проект по автоматизации тестирования в Технополис. 
 Сборщик проекта - Maven.
 Система контроля версий - Git.
