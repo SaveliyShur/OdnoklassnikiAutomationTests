@@ -1,4 +1,4 @@
-#OdnoklassnikiAutomationsTests with Selenium 
+#OdnoklassnikiAutomationsTests
 Выпускной проект по автоматизации тестирования в Технополис. 
 Сборщик проекта - Maven.
 Система контроля версий - Git.
